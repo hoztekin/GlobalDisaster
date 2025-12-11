@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+env/
+venv/
+.venv
+
+# Jupyter
+.ipynb_checkpoints
+
+# Data (too large)
+*.csv
+*.xlsx
+!data/.gitkeep
+
+# Models
+*.pkl
+*.joblib
+models/
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Logs
+*.log

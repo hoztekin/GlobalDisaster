@@ -1,0 +1,13 @@
+
+ULTIMATE EDA RAPORU
+-------------------
+Tarih: 2025-12-11 11:23:56.367094
+Toplam Veri: 50000
+Zenginleþtirme: World Bank Nüfus ve Yüzölçümü Eklendi.
+
+Önemli Bulgular:
+1. En maliyetli afet tipi: Volcanic Eruption
+2. Mevsimsel fark (ANOVA): Yok
+3. Nüfus yoðunluðu ile kayýp korelasyonu: -0.006
+
+Kayýt Yeri: D:\Miuul Final Project\GlobalDisaster\data\processed\disaster_data_final.csv

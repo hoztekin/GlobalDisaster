@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  disaster-dashboard:
+    build: .
+    container_name: disaster-analysis
+    ports:
+      - "8505:8501"
+    volumes:
+      - ./data:/app/data
+      - ./reports:/app/reports
+      - ./models:/app/models
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
