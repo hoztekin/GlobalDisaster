@@ -4,6 +4,8 @@
 
 """
 AMAÇ:
+Polynomial Regression modeli
+
 1. Gelecek 12 ay için küresel afet sıklığını tahmin etmek.
 2. Hangi afet tiplerinin yükseliş trendinde olduğunu (Momentum) bulmak.
 
@@ -185,7 +187,7 @@ def run_trend_pipeline():
     # =========================================================================
     momentum_df.to_csv(Config.OUTPUT_DIR / 'disaster_momentum_analysis.csv', index=False)
 
-    # Trend Modelini Kaydet (Gerekirse Streamlit'te canlı tahmin için)
+    # Trend Modelini Kaydet
     with open(Config.OUTPUT_DIR / 'trend_forecasting_model.pkl', 'wb') as f:
         pickle.dump(model, f)
 

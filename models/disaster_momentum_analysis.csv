@@ -1,0 +1,11 @@
+Disaster Type,Recent Count (2y),Growth Rate (%),Trend
+Tornado,1436,5.59,⬆️ RISING
+Earthquake,1496,3.96,➡️ STABLE
+Storm Surge,1431,2.58,➡️ STABLE
+Volcanic Eruption,1395,-0.29,➡️ STABLE
+Hurricane,1448,-0.89,➡️ STABLE
+Landslide,1484,-0.93,➡️ STABLE
+Wildfire,1364,-3.26,➡️ STABLE
+Drought,1389,-3.34,➡️ STABLE
+Extreme Heat,1426,-3.97,➡️ STABLE
+Flood,1356,-10.61,⬇️ FALLING

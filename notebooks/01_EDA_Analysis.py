@@ -55,7 +55,6 @@ REPORT_DIR.mkdir(parents=True, exist_ok=True)
 
 print("=" * 100)
 print(f"📂 PROJE DİZİNİ: {PROJECT_ROOT}")
-print("🚀 ULTIMATE EDA BAŞLATILIYOR")
 print("=" * 100)
 
 # =============================================================================
@@ -245,7 +244,6 @@ print("\n[9/11] DISTRIBUTION ANALYSIS")
 print(f"   📊 Severity Skewness: {df['severity_index'].skew():.2f}")
 print(f"   📊 Casualties Skewness (Original): {df['casualties'].skew():.2f}")
 print(f"   📊 Casualties Skewness (Log Transformed): {df['casualties_log'].skew():.2f}")
-print("      (Log dönüşümü dağılımı düzeltti mi? Evet ise modellere hazırız.)")
 
 # =============================================================================
 # BÖLÜM 10: OUTLIER DETECTION

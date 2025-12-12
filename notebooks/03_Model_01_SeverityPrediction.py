@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from pathlib import Path
 
-# Windows Çökme Engelleyiciler (EN BAŞA EKLENDİ)
+# Windows Çökme Engelleyiciler
 os.environ['FOR_DISABLE_CONSOLE_CTRL_HANDLER'] = '1'
 os.environ['OMP_NUM_THREADS'] = '1'
 

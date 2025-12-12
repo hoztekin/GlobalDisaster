@@ -1,6 +1,5 @@
 # =============================================================================
 # 02_Strategic_Analysis.py
-# (EKONOMİK ANALİZ + FULL GÖRSELLEŞTİRME SUITE)
 # =============================================================================
 
 import os
@@ -125,6 +124,7 @@ fig = px.scatter_geo(
     hover_data={"economic_loss_usd": ":,.0f", "casualties": ":,.0f", "population_density": ":.1f", "bubble_size": False},
     title="🌍 5. Global Disaster Impact Map", projection="natural earth"
 )
+fig.update_layout(height=700, width=1400, showlegend=True)
 fig.write_html(OUTPUT_DIR / "5_geographic_impact_map.html")
 
 # =============================================================================
@@ -154,6 +154,8 @@ fig = px.scatter(
     size='casualties', hover_data=['country', 'date'], log_y=True,
     title="⚠️ 7. Severity vs Economic Loss Relationship"
 )
+fig.update_traces(hovertemplate='<b>%{customdata[0]}</b><br>Severity: %{x}<br>Loss: $%{y:,.0f}<extra></extra>')
+fig.update_layout(height=700, width=1600, showlegend=True)
 fig.write_html(OUTPUT_DIR / "7_severity_economic_scatter.html")
 
 # =============================================================================

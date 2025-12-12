@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d48e280a-81e6-4635-aae7-cb94ed86c606" name="Changes" comment="Updated Files">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/GlobalDisaster.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vscode/PythonImportHelper-v2-Completion.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/processed/disaster_data_final.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/raw/global_disaster.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/country_risk_clusters.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/disaster_momentum_analysis.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/model_01_features.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/risk_kmeans_model.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/severity_prediction_model.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/severity_prediction_scaler.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/trend_forecasting_model.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/01_EDA_Analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/01_EDA_Analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/02_Strategic_Analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/02_Strategic_Analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/03_Model_01_SeverityPrediction.py" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/03_Model_01_SeverityPrediction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/03_Model_02_RiskClustering.py" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/03_Model_02_RiskClustering.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/model_02_clustering/risk_cluster_map.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/model_02_clustering/risk_cluster_map.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/10_recovery_cost_timeline.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/strategic_analysis/10_recovery_cost_timeline.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/1_economic_loss_waterfall.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/1_waterfall_country_economic_loss.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/strategic_analysis/1_waterfall_country_economic_loss.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/2_aid_efficiency_radar.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/2_disaster_type_cost_comparison.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/strategic_analysis/2_disaster_type_cost_comparison.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/3_roi_analysis.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/3_temporal_economic_trend.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/strategic_analysis/3_temporal_economic_trend.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/4_aid_efficiency_radar.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/strategic_analysis/4_aid_efficiency_radar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/4_global_impact_map.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/5_geographic_impact_map.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/strategic_analysis/5_geographic_impact_map.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/6_roi_investment_analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/strategic_analysis/6_roi_investment_analysis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/7_severity_economic_scatter.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/strategic_analysis/7_severity_economic_scatter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/8_top_20_expensive_disasters.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/strategic_analysis/8_top_20_expensive_disasters.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/9_aid_gap_waterfall.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/strategic_analysis/9_aid_gap_waterfall.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/ultimate_eda/eda_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/reports/ultimate_eda/eda_summary.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;hoztekin&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/hoztekin/GlobalDisaster.git&quot;,
+    &quot;accountId&quot;: &quot;0e59cdab-39d3-4ed0-8c16-c40d130fbff5&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="36QHhxuSwatCUF1JN3hmtfZZuiw" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.01_EDA_Analysis.executor&quot;: &quot;Run&quot;,
+    &quot;Python.02_Economic_Analysis.executor&quot;: &quot;Run&quot;,
+    &quot;Python.02_Strategic_Analysis.executor&quot;: &quot;Run&quot;,
+    &quot;Python.03_Model_01_SeverityPrediction.executor&quot;: &quot;Run&quot;,
+    &quot;Python.03_Model_02_CasualtyPrediction.executor&quot;: &quot;Run&quot;,
+    &quot;Python.03_Model_02_RiskClustering.executor&quot;: &quot;Run&quot;,
+    &quot;Python.03_Model_03_TrendForecasting.executor&quot;: &quot;Run&quot;,
+    &quot;Python.03_Visualizations.executor&quot;: &quot;Run&quot;,
+    &quot;Python.04_Advanced_EDA.executor&quot;: &quot;Run&quot;,
+    &quot;Python.05_Model_01_SeverityPrediction.executor&quot;: &quot;Run&quot;,
+    &quot;Python.05_Model_02_CasualtyPrediction.executor&quot;: &quot;Run&quot;,
+    &quot;Python.05_Model_03_EconomicDamageForecasting.executor&quot;: &quot;Run&quot;,
+    &quot;Python.05_Model_04_RiskLevelClassification.executor&quot;: &quot;Run&quot;,
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Miuul Final Project\GlobalDisaster\data\processed" />
+      <recent name="D:\Miuul Final Project\GlobalDisaster\data\raw" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-164cda30dcd9-0af03a5fa574-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.26830.99" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d48e280a-81e6-4635-aae7-cb94ed86c606" name="Changes" comment="" />
+      <created>1764931998004</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1764931998004</updated>
+    </task>
+    <task id="LOCAL-00001" summary="CompleteEda">
+      <option name="closed" value="true" />
+      <created>1765134449819</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1765134449819</updated>
+    </task>
+    <task id="LOCAL-00002" summary="CompleteEda">
+      <option name="closed" value="true" />
+      <created>1765299444654</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1765299444654</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Complete Deploy">
+      <option name="closed" value="true" />
+      <created>1765452107020</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1765452107020</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Hidden Files Added">
+      <option name="closed" value="true" />
+      <created>1765452207971</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1765452207971</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Create Workflow directory">
+      <option name="closed" value="true" />
+      <created>1765452482994</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1765452482994</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Updated Files">
+      <option name="closed" value="true" />
+      <created>1765456651134</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1765456651134</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="AddedModel" />
+    <MESSAGE value="AddedModel" />
+    <MESSAGE value="Complete Deploy" />
+    <MESSAGE value="Hidden Files Added" />
+    <MESSAGE value="Create Workflow directory" />
+    <MESSAGE value="Updated Files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Files" />
+  </component>
+</project>

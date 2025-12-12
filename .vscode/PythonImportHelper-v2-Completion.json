@@ -1,0 +1,1187 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "warnings",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "warnings",
+        "description": "warnings",
+        "detail": "warnings",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "seaborn",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "seaborn",
+        "description": "seaborn",
+        "detail": "seaborn",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "stats",
+        "importPath": "scipy",
+        "description": "scipy",
+        "isExtraImport": true,
+        "detail": "scipy",
+        "documentation": {}
+    },
+    {
+        "label": "f_oneway",
+        "importPath": "scipy.stats",
+        "description": "scipy.stats",
+        "isExtraImport": true,
+        "detail": "scipy.stats",
+        "documentation": {}
+    },
+    {
+        "label": "kruskal",
+        "importPath": "scipy.stats",
+        "description": "scipy.stats",
+        "isExtraImport": true,
+        "detail": "scipy.stats",
+        "documentation": {}
+    },
+    {
+        "label": "spearmanr",
+        "importPath": "scipy.stats",
+        "description": "scipy.stats",
+        "isExtraImport": true,
+        "detail": "scipy.stats",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "plotly.express",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "plotly.express",
+        "description": "plotly.express",
+        "detail": "plotly.express",
+        "documentation": {}
+    },
+    {
+        "label": "plotly.graph_objects",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "plotly.graph_objects",
+        "description": "plotly.graph_objects",
+        "detail": "plotly.graph_objects",
+        "documentation": {}
+    },
+    {
+        "label": "make_subplots",
+        "importPath": "plotly.subplots",
+        "description": "plotly.subplots",
+        "isExtraImport": true,
+        "detail": "plotly.subplots",
+        "documentation": {}
+    },
+    {
+        "label": "pickle",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pickle",
+        "description": "pickle",
+        "detail": "pickle",
+        "documentation": {}
+    },
+    {
+        "label": "train_test_split",
+        "importPath": "sklearn.model_selection",
+        "description": "sklearn.model_selection",
+        "isExtraImport": true,
+        "detail": "sklearn.model_selection",
+        "documentation": {}
+    },
+    {
+        "label": "StandardScaler",
+        "importPath": "sklearn.preprocessing",
+        "description": "sklearn.preprocessing",
+        "isExtraImport": true,
+        "detail": "sklearn.preprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "StandardScaler",
+        "importPath": "sklearn.preprocessing",
+        "description": "sklearn.preprocessing",
+        "isExtraImport": true,
+        "detail": "sklearn.preprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "PolynomialFeatures",
+        "importPath": "sklearn.preprocessing",
+        "description": "sklearn.preprocessing",
+        "isExtraImport": true,
+        "detail": "sklearn.preprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "classification_report",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "confusion_matrix",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "f1_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "accuracy_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "SMOTE",
+        "importPath": "imblearn.over_sampling",
+        "description": "imblearn.over_sampling",
+        "isExtraImport": true,
+        "detail": "imblearn.over_sampling",
+        "documentation": {}
+    },
+    {
+        "label": "XGBClassifier",
+        "importPath": "xgboost",
+        "description": "xgboost",
+        "isExtraImport": true,
+        "detail": "xgboost",
+        "documentation": {}
+    },
+    {
+        "label": "LGBMClassifier",
+        "importPath": "lightgbm",
+        "description": "lightgbm",
+        "isExtraImport": true,
+        "detail": "lightgbm",
+        "documentation": {}
+    },
+    {
+        "label": "RandomForestClassifier",
+        "importPath": "sklearn.ensemble",
+        "description": "sklearn.ensemble",
+        "isExtraImport": true,
+        "detail": "sklearn.ensemble",
+        "documentation": {}
+    },
+    {
+        "label": "KMeans",
+        "importPath": "sklearn.cluster",
+        "description": "sklearn.cluster",
+        "isExtraImport": true,
+        "detail": "sklearn.cluster",
+        "documentation": {}
+    },
+    {
+        "label": "LinearRegression",
+        "importPath": "sklearn.linear_model",
+        "description": "sklearn.linear_model",
+        "isExtraImport": true,
+        "detail": "sklearn.linear_model",
+        "documentation": {}
+    },
+    {
+        "label": "make_pipeline",
+        "importPath": "sklearn.pipeline",
+        "description": "sklearn.pipeline",
+        "isExtraImport": true,
+        "detail": "sklearn.pipeline",
+        "documentation": {}
+    },
+    {
+        "label": "streamlit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "streamlit.components.v1",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "streamlit.components.v1",
+        "description": "streamlit.components.v1",
+        "detail": "streamlit.components.v1",
+        "documentation": {}
+    },
+    {
+        "label": "option_menu",
+        "importPath": "streamlit_option_menu",
+        "description": "streamlit_option_menu",
+        "isExtraImport": true,
+        "detail": "streamlit_option_menu",
+        "documentation": {}
+    },
+    {
+        "label": "asyncio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "asyncio",
+        "description": "asyncio",
+        "detail": "asyncio",
+        "documentation": {}
+    },
+    {
+        "label": "aiohttp",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "aiohttp",
+        "description": "aiohttp",
+        "detail": "aiohttp",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_wb_indicator",
+        "kind": 2,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "def fetch_wb_indicator(iso3, indicator, start, end):\n    url = f\"https://api.worldbank.org/v2/country/{iso3}/indicator/{indicator}\"\n    params = {\"date\": f\"{start}:{end}\", \"format\": \"json\", \"per_page\": \"100\"}\n    try:\n        # TIMEOUT EKLENDİ: 10 saniye cevap gelmezse pas geçer, program donmaz.\n        r = requests.get(url, params=params, timeout=10)\n        if r.status_code == 200 and len(r.json()) > 1:\n            return {int(x['date']): x['value'] for x in r.json()[1] if x['value']}\n    except:\n        return {}",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "get_season",
+        "kind": 2,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "def get_season(m):\n    if m in [12, 1, 2]:\n        return 'Winter'\n    elif m in [3, 4, 5]:\n        return 'Spring'\n    elif m in [6, 7, 8]:\n        return 'Summer'\n    else:\n        return 'Autumn'\ndf['season'] = df['month'].apply(get_season)",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "count_outliers",
+        "kind": 2,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "def count_outliers(col):\n    Q1 = df[col].quantile(0.25)\n    Q3 = df[col].quantile(0.75)\n    IQR = Q3 - Q1\n    lower = Q1 - 1.5 * IQR\n    upper = Q3 + 1.5 * IQR\n    return ((df[col] < lower) | (df[col] > upper)).sum()\nprint(f\"   🚨 Outliers in Economic Loss: {count_outliers('economic_loss_usd')}\")\nprint(f\"   🚨 Outliers in Casualties: {count_outliers('casualties')}\")\n# =============================================================================",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ['FOR_DISABLE_CONSOLE_CTRL_HANDLER']",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "os.environ['FOR_DISABLE_CONSOLE_CTRL_HANDLER'] = '1'\n# Ayarlar\nwarnings.filterwarnings('ignore')\npd.set_option('display.max_columns', None)\nplt.style.use('seaborn-v0_8-whitegrid')\n# 2. KRİTİK AYAR: Dosya Yolu (NameError çözümü)\ntry:\n    PROJECT_ROOT = Path(__file__).resolve().parents[1]\nexcept NameError:\n    PROJECT_ROOT = Path(r\"D:\\Miuul Final Project\\GlobalDisaster\")",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "DATA_RAW",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "DATA_RAW = PROJECT_ROOT / \"data\" / \"raw\" / \"global_disaster.csv\"\nDATA_PROCESSED = PROJECT_ROOT / \"data\" / \"processed\"\nREPORT_DIR = PROJECT_ROOT / \"reports\" / \"ultimate_eda\"\n# Klasörleri oluştur\nDATA_PROCESSED.mkdir(parents=True, exist_ok=True)\nREPORT_DIR.mkdir(parents=True, exist_ok=True)\nprint(\"=\" * 100)\nprint(f\"📂 PROJE DİZİNİ: {PROJECT_ROOT}\")\nprint(\"🚀 ULTIMATE EDA BAŞLATILIYOR\")\nprint(\"=\" * 100)",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "DATA_PROCESSED",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "DATA_PROCESSED = PROJECT_ROOT / \"data\" / \"processed\"\nREPORT_DIR = PROJECT_ROOT / \"reports\" / \"ultimate_eda\"\n# Klasörleri oluştur\nDATA_PROCESSED.mkdir(parents=True, exist_ok=True)\nREPORT_DIR.mkdir(parents=True, exist_ok=True)\nprint(\"=\" * 100)\nprint(f\"📂 PROJE DİZİNİ: {PROJECT_ROOT}\")\nprint(\"🚀 ULTIMATE EDA BAŞLATILIYOR\")\nprint(\"=\" * 100)\n# =============================================================================",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "REPORT_DIR",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "REPORT_DIR = PROJECT_ROOT / \"reports\" / \"ultimate_eda\"\n# Klasörleri oluştur\nDATA_PROCESSED.mkdir(parents=True, exist_ok=True)\nREPORT_DIR.mkdir(parents=True, exist_ok=True)\nprint(\"=\" * 100)\nprint(f\"📂 PROJE DİZİNİ: {PROJECT_ROOT}\")\nprint(\"🚀 ULTIMATE EDA BAŞLATILIYOR\")\nprint(\"=\" * 100)\n# =============================================================================\n# BÖLÜM 1: VERİ YÜKLEME VE API (Zaman Aşımı Korumalı)",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "df = pd.read_csv(DATA_RAW)\ndf['date'] = pd.to_datetime(df['date'])\ndf['year'] = df['date'].dt.year\n# World Bank API Yardımcıları\nCOUNTRY_TO_ISO3 = {\n    \"Australia\": \"AUS\", \"Bangladesh\": \"BGD\", \"Brazil\": \"BRA\", \"Canada\": \"CAN\",\n    \"Chile\": \"CHL\", \"China\": \"CHN\", \"France\": \"FRA\", \"Germany\": \"DEU\",\n    \"Greece\": \"GRC\", \"India\": \"IND\", \"Indonesia\": \"IDN\", \"Italy\": \"ITA\",\n    \"Japan\": \"JPN\", \"Mexico\": \"MEX\", \"Nigeria\": \"NGA\", \"Philippines\": \"PHL\",\n    \"South Africa\": \"ZAF\", \"Spain\": \"ESP\", \"Turkey\": \"TUR\", \"United States\": \"USA\",",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "df['date']",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "df['date'] = pd.to_datetime(df['date'])\ndf['year'] = df['date'].dt.year\n# World Bank API Yardımcıları\nCOUNTRY_TO_ISO3 = {\n    \"Australia\": \"AUS\", \"Bangladesh\": \"BGD\", \"Brazil\": \"BRA\", \"Canada\": \"CAN\",\n    \"Chile\": \"CHL\", \"China\": \"CHN\", \"France\": \"FRA\", \"Germany\": \"DEU\",\n    \"Greece\": \"GRC\", \"India\": \"IND\", \"Indonesia\": \"IDN\", \"Italy\": \"ITA\",\n    \"Japan\": \"JPN\", \"Mexico\": \"MEX\", \"Nigeria\": \"NGA\", \"Philippines\": \"PHL\",\n    \"South Africa\": \"ZAF\", \"Spain\": \"ESP\", \"Turkey\": \"TUR\", \"United States\": \"USA\",\n    \"Pakistan\": \"PAK\", \"Vietnam\": \"VNM\", \"Thailand\": \"THA\", \"Nepal\": \"NPL\",",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "df['year']",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "df['year'] = df['date'].dt.year\n# World Bank API Yardımcıları\nCOUNTRY_TO_ISO3 = {\n    \"Australia\": \"AUS\", \"Bangladesh\": \"BGD\", \"Brazil\": \"BRA\", \"Canada\": \"CAN\",\n    \"Chile\": \"CHL\", \"China\": \"CHN\", \"France\": \"FRA\", \"Germany\": \"DEU\",\n    \"Greece\": \"GRC\", \"India\": \"IND\", \"Indonesia\": \"IDN\", \"Italy\": \"ITA\",\n    \"Japan\": \"JPN\", \"Mexico\": \"MEX\", \"Nigeria\": \"NGA\", \"Philippines\": \"PHL\",\n    \"South Africa\": \"ZAF\", \"Spain\": \"ESP\", \"Turkey\": \"TUR\", \"United States\": \"USA\",\n    \"Pakistan\": \"PAK\", \"Vietnam\": \"VNM\", \"Thailand\": \"THA\", \"Nepal\": \"NPL\",\n    \"Iran\": \"IRN\", \"United Kingdom\": \"GBR\", \"New Zealand\": \"NZL\"",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "COUNTRY_TO_ISO3",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "COUNTRY_TO_ISO3 = {\n    \"Australia\": \"AUS\", \"Bangladesh\": \"BGD\", \"Brazil\": \"BRA\", \"Canada\": \"CAN\",\n    \"Chile\": \"CHL\", \"China\": \"CHN\", \"France\": \"FRA\", \"Germany\": \"DEU\",\n    \"Greece\": \"GRC\", \"India\": \"IND\", \"Indonesia\": \"IDN\", \"Italy\": \"ITA\",\n    \"Japan\": \"JPN\", \"Mexico\": \"MEX\", \"Nigeria\": \"NGA\", \"Philippines\": \"PHL\",\n    \"South Africa\": \"ZAF\", \"Spain\": \"ESP\", \"Turkey\": \"TUR\", \"United States\": \"USA\",\n    \"Pakistan\": \"PAK\", \"Vietnam\": \"VNM\", \"Thailand\": \"THA\", \"Nepal\": \"NPL\",\n    \"Iran\": \"IRN\", \"United Kingdom\": \"GBR\", \"New Zealand\": \"NZL\"\n}\ndef fetch_wb_indicator(iso3, indicator, start, end):",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "records",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "records = []\ncountries = [c for c in df['country'].unique() if c in COUNTRY_TO_ISO3]\nfor c in countries:\n    iso = COUNTRY_TO_ISO3[c]\n    # Nüfus\n    pop_map = fetch_wb_indicator(iso, \"SP.POP.TOTL\", df['year'].min(), df['year'].max())\n    # Yüzölçümü (2020 sabit)\n    area_map = fetch_wb_indicator(iso, \"AG.SRF.TOTL.K2\", 2020, 2020)\n    area = list(area_map.values())[0] if area_map else None\n    for y in range(df['year'].min(), df['year'].max() + 1):",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "countries",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "countries = [c for c in df['country'].unique() if c in COUNTRY_TO_ISO3]\nfor c in countries:\n    iso = COUNTRY_TO_ISO3[c]\n    # Nüfus\n    pop_map = fetch_wb_indicator(iso, \"SP.POP.TOTL\", df['year'].min(), df['year'].max())\n    # Yüzölçümü (2020 sabit)\n    area_map = fetch_wb_indicator(iso, \"AG.SRF.TOTL.K2\", 2020, 2020)\n    area = list(area_map.values())[0] if area_map else None\n    for y in range(df['year'].min(), df['year'].max() + 1):\n        records.append({",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "wb_df",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "wb_df = pd.DataFrame(records)\ndf = df.merge(wb_df, on=['country', 'year'], how='left')\nprint(f\"   ✅ Veri zenginleştirildi! (Population ve Surface Area eklendi)\")\n# Eksikleri doldur (Mean Imputation)\ndf['population'] = df['population'].fillna(df.groupby('country')['population'].transform('mean'))\n# =============================================================================\n# BÖLÜM 2: FEATURE ENGINEERING\n# =============================================================================\nprint(\"\\n[2/11] FEATURE ENGINEERING\")\n# Zaman",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "df = df.merge(wb_df, on=['country', 'year'], how='left')\nprint(f\"   ✅ Veri zenginleştirildi! (Population ve Surface Area eklendi)\")\n# Eksikleri doldur (Mean Imputation)\ndf['population'] = df['population'].fillna(df.groupby('country')['population'].transform('mean'))\n# =============================================================================\n# BÖLÜM 2: FEATURE ENGINEERING\n# =============================================================================\nprint(\"\\n[2/11] FEATURE ENGINEERING\")\n# Zaman\ndf['month'] = df['date'].dt.month",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "df['population']",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "df['population'] = df['population'].fillna(df.groupby('country')['population'].transform('mean'))\n# =============================================================================\n# BÖLÜM 2: FEATURE ENGINEERING\n# =============================================================================\nprint(\"\\n[2/11] FEATURE ENGINEERING\")\n# Zaman\ndf['month'] = df['date'].dt.month\ndf['day_of_year'] = df['date'].dt.dayofyear\ndef get_season(m):\n    if m in [12, 1, 2]:",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "df['month']",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "df['month'] = df['date'].dt.month\ndf['day_of_year'] = df['date'].dt.dayofyear\ndef get_season(m):\n    if m in [12, 1, 2]:\n        return 'Winter'\n    elif m in [3, 4, 5]:\n        return 'Spring'\n    elif m in [6, 7, 8]:\n        return 'Summer'\n    else:",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "df['day_of_year']",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "df['day_of_year'] = df['date'].dt.dayofyear\ndef get_season(m):\n    if m in [12, 1, 2]:\n        return 'Winter'\n    elif m in [3, 4, 5]:\n        return 'Spring'\n    elif m in [6, 7, 8]:\n        return 'Summer'\n    else:\n        return 'Autumn'",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "df['season']",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "df['season'] = df['month'].apply(get_season)\n# Hesaplamalı Metrikler\ndf['population_density'] = df['population'] / (df['surface_area_km2'] + 1)\ndf['loss_per_capita'] = df['economic_loss_usd'] / (df['population'] + 1)\ndf['casualties_per_100k'] = (df['casualties'] / (df['population'] + 1)) * 100000\n# Log Dönüşümleri (Modeller için hazırlık)\ndf['casualties_log'] = np.log1p(df['casualties'])\ndf['economic_loss_log'] = np.log1p(df['economic_loss_usd'])\nprint(\"   ✅ Yeni özellikler üretildi: Season, Density, Loss Per Capita...\")\n# =============================================================================",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "df['population_density']",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "df['population_density'] = df['population'] / (df['surface_area_km2'] + 1)\ndf['loss_per_capita'] = df['economic_loss_usd'] / (df['population'] + 1)\ndf['casualties_per_100k'] = (df['casualties'] / (df['population'] + 1)) * 100000\n# Log Dönüşümleri (Modeller için hazırlık)\ndf['casualties_log'] = np.log1p(df['casualties'])\ndf['economic_loss_log'] = np.log1p(df['economic_loss_usd'])\nprint(\"   ✅ Yeni özellikler üretildi: Season, Density, Loss Per Capita...\")\n# =============================================================================\n# BÖLÜM 3: DATA QUALITY CHECK\n# =============================================================================",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "df['loss_per_capita']",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "df['loss_per_capita'] = df['economic_loss_usd'] / (df['population'] + 1)\ndf['casualties_per_100k'] = (df['casualties'] / (df['population'] + 1)) * 100000\n# Log Dönüşümleri (Modeller için hazırlık)\ndf['casualties_log'] = np.log1p(df['casualties'])\ndf['economic_loss_log'] = np.log1p(df['economic_loss_usd'])\nprint(\"   ✅ Yeni özellikler üretildi: Season, Density, Loss Per Capita...\")\n# =============================================================================\n# BÖLÜM 3: DATA QUALITY CHECK\n# =============================================================================\nprint(\"\\n[3/11] DATA QUALITY CHECK\")",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "df['casualties_per_100k']",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "df['casualties_per_100k'] = (df['casualties'] / (df['population'] + 1)) * 100000\n# Log Dönüşümleri (Modeller için hazırlık)\ndf['casualties_log'] = np.log1p(df['casualties'])\ndf['economic_loss_log'] = np.log1p(df['economic_loss_usd'])\nprint(\"   ✅ Yeni özellikler üretildi: Season, Density, Loss Per Capita...\")\n# =============================================================================\n# BÖLÜM 3: DATA QUALITY CHECK\n# =============================================================================\nprint(\"\\n[3/11] DATA QUALITY CHECK\")\nmissing = df.isnull().sum()",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "df['casualties_log']",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "df['casualties_log'] = np.log1p(df['casualties'])\ndf['economic_loss_log'] = np.log1p(df['economic_loss_usd'])\nprint(\"   ✅ Yeni özellikler üretildi: Season, Density, Loss Per Capita...\")\n# =============================================================================\n# BÖLÜM 3: DATA QUALITY CHECK\n# =============================================================================\nprint(\"\\n[3/11] DATA QUALITY CHECK\")\nmissing = df.isnull().sum()\nprint(f\"   🔍 Eksik Değerler:\\n{missing[missing > 0]}\")\nprint(f\"   🔍 Tekrar Eden Satırlar: {df.duplicated().sum()}\")",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "df['economic_loss_log']",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "df['economic_loss_log'] = np.log1p(df['economic_loss_usd'])\nprint(\"   ✅ Yeni özellikler üretildi: Season, Density, Loss Per Capita...\")\n# =============================================================================\n# BÖLÜM 3: DATA QUALITY CHECK\n# =============================================================================\nprint(\"\\n[3/11] DATA QUALITY CHECK\")\nmissing = df.isnull().sum()\nprint(f\"   🔍 Eksik Değerler:\\n{missing[missing > 0]}\")\nprint(f\"   🔍 Tekrar Eden Satırlar: {df.duplicated().sum()}\")\nprint(f\"   📊 Veri Aralığı: {df['date'].min().date()} - {df['date'].max().date()}\")",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "missing",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "missing = df.isnull().sum()\nprint(f\"   🔍 Eksik Değerler:\\n{missing[missing > 0]}\")\nprint(f\"   🔍 Tekrar Eden Satırlar: {df.duplicated().sum()}\")\nprint(f\"   📊 Veri Aralığı: {df['date'].min().date()} - {df['date'].max().date()}\")\n# =============================================================================\n# BÖLÜM 4: TEMPORAL ANALYSIS\n# =============================================================================\nprint(\"\\n[4/11] TEMPORAL ANALYSIS\")\nyearly_counts = df['year'].value_counts().sort_index()\nprint(f\"   📅 Yıllara Göre Afet Sayıları:\\n{yearly_counts}\")",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "yearly_counts",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "yearly_counts = df['year'].value_counts().sort_index()\nprint(f\"   📅 Yıllara Göre Afet Sayıları:\\n{yearly_counts}\")\nseasonal_stats = df.groupby('season')[['severity_index', 'casualties']].mean()\nprint(f\"   🌸 Mevsimsel Ortalamalar:\\n{seasonal_stats}\")\n# =============================================================================\n# BÖLÜM 5: GEOGRAPHIC ANALYSIS\n# =============================================================================\nprint(\"\\n[5/11] GEOGRAPHIC ANALYSIS\")\ntop_risk_countries = df.groupby('country')['severity_index'].mean().sort_values(ascending=False).head(5)\nprint(f\"   🌍 En Yüksek Ortalama Şiddet (Top 5):\\n{top_risk_countries}\")",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "seasonal_stats",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "seasonal_stats = df.groupby('season')[['severity_index', 'casualties']].mean()\nprint(f\"   🌸 Mevsimsel Ortalamalar:\\n{seasonal_stats}\")\n# =============================================================================\n# BÖLÜM 5: GEOGRAPHIC ANALYSIS\n# =============================================================================\nprint(\"\\n[5/11] GEOGRAPHIC ANALYSIS\")\ntop_risk_countries = df.groupby('country')['severity_index'].mean().sort_values(ascending=False).head(5)\nprint(f\"   🌍 En Yüksek Ortalama Şiddet (Top 5):\\n{top_risk_countries}\")\n# Yeni eklenen veri ile analiz\ndensest_impact = df.groupby('country')[['population_density', 'casualties']].mean().sort_values('population_density',",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "top_risk_countries",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "top_risk_countries = df.groupby('country')['severity_index'].mean().sort_values(ascending=False).head(5)\nprint(f\"   🌍 En Yüksek Ortalama Şiddet (Top 5):\\n{top_risk_countries}\")\n# Yeni eklenen veri ile analiz\ndensest_impact = df.groupby('country')[['population_density', 'casualties']].mean().sort_values('population_density',\n                                                                                                ascending=False).head(5)\nprint(f\"   👥 En Yoğun Nüfuslu Ülkelerde Ortalama Kayıp:\\n{densest_impact}\")\n# =============================================================================\n# BÖLÜM 6: DISASTER TYPE ANALYSIS\n# =============================================================================\nprint(\"\\n[6/11] DISASTER TYPE ANALYSIS\")",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "densest_impact",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "densest_impact = df.groupby('country')[['population_density', 'casualties']].mean().sort_values('population_density',\n                                                                                                ascending=False).head(5)\nprint(f\"   👥 En Yoğun Nüfuslu Ülkelerde Ortalama Kayıp:\\n{densest_impact}\")\n# =============================================================================\n# BÖLÜM 6: DISASTER TYPE ANALYSIS\n# =============================================================================\nprint(\"\\n[6/11] DISASTER TYPE ANALYSIS\")\ntype_stats = df.groupby('disaster_type').agg({\n    'severity_index': 'mean',\n    'economic_loss_usd': 'sum',",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "type_stats",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "type_stats = df.groupby('disaster_type').agg({\n    'severity_index': 'mean',\n    'economic_loss_usd': 'sum',\n    'casualties': 'sum'\n}).sort_values('economic_loss_usd', ascending=False)\nprint(f\"   🌪️ Afet Tipine Göre İstatistikler:\\n{type_stats}\")\n# =============================================================================\n# BÖLÜM 7: STATISTICAL TESTS (ANOVA)\n# =============================================================================\nprint(\"\\n[7/11] STATISTICAL TESTS (ANOVA & Kruskal-Wallis)\")",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "groups",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "groups = [df[df['season'] == s]['severity_index'] for s in df['season'].unique()]\nf_stat, p_val = f_oneway(*groups)\nprint(f\"   🧪 ANOVA (Season vs Severity): P-value = {p_val:.5f}\")\nif p_val < 0.05:\n    print(\"      ✅ SONUÇ: Mevsimler arasında afet şiddeti açısından anlamlı bir fark VAR.\")\nelse:\n    print(\"      ❌ SONUÇ: Mevsimsel fark istatistiksel olarak anlamlı değil.\")\n# =============================================================================\n# BÖLÜM 8: CORRELATION ANALYSIS\n# =============================================================================",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "num_cols",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "num_cols = ['severity_index', 'casualties', 'economic_loss_usd', 'population_density', 'response_time_hours']\ncorr = df[num_cols].corr()\nprint(\"   🔗 Korelasyon Matrisi:\")\nprint(corr)\n# Heatmap kaydet\nplt.figure(figsize=(10, 8))\nsns.heatmap(corr, annot=True, cmap='coolwarm', fmt=\".2f\")\nplt.title(\"Feature Correlation Matrix\")\nplt.savefig(REPORT_DIR / \"correlation_matrix.png\")\nprint(\"   💾 Heatmap kaydedildi: correlation_matrix.png\")",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "corr",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "corr = df[num_cols].corr()\nprint(\"   🔗 Korelasyon Matrisi:\")\nprint(corr)\n# Heatmap kaydet\nplt.figure(figsize=(10, 8))\nsns.heatmap(corr, annot=True, cmap='coolwarm', fmt=\".2f\")\nplt.title(\"Feature Correlation Matrix\")\nplt.savefig(REPORT_DIR / \"correlation_matrix.png\")\nprint(\"   💾 Heatmap kaydedildi: correlation_matrix.png\")\n# =============================================================================",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "output_path",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "output_path = DATA_PROCESSED / \"disaster_data_final.csv\"\ndf.to_csv(output_path, index=False)\nsummary = f\"\"\"\nEDA RAPORU\n-------------------\nTarih: {datetime.now()}\nToplam Veri: {len(df)}\nZenginleştirme: World Bank Nüfus ve Yüzölçümü Eklendi.\nÖnemli Bulgular:\n1. En maliyetli afet tipi: {type_stats.index[0]}",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "summary",
+        "kind": 5,
+        "importPath": "notebooks.01_EDA_Analysis",
+        "description": "notebooks.01_EDA_Analysis",
+        "peekOfCode": "summary = f\"\"\"\nEDA RAPORU\n-------------------\nTarih: {datetime.now()}\nToplam Veri: {len(df)}\nZenginleştirme: World Bank Nüfus ve Yüzölçümü Eklendi.\nÖnemli Bulgular:\n1. En maliyetli afet tipi: {type_stats.index[0]}\n2. Mevsimsel fark (ANOVA): {'Var' if p_val < 0.05 else 'Yok'}\n3. Nüfus yoğunluğu ile kayıp korelasyonu: {corr.loc['population_density', 'casualties']:.3f}",
+        "detail": "notebooks.01_EDA_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "DATA_FILE",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "DATA_FILE = PROJECT_ROOT / \"data\" / \"processed\" / \"disaster_data_final.csv\"\nOUTPUT_DIR = PROJECT_ROOT / \"reports\" / \"strategic_analysis\"\nOUTPUT_DIR.mkdir(parents=True, exist_ok=True)\n# Renk Paleti\nCOLORS = {\n    'primary': '#FF6B35', 'secondary': '#004E89', 'accent': '#F7B801',\n    'success': '#2BAE66', 'danger': '#FC5130', 'purple': '#9B59B6',\n    'teal': '#1ABC9C', 'navy': '#2C3E50'\n}\nprint(\"=\" * 100)",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "OUTPUT_DIR",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "OUTPUT_DIR = PROJECT_ROOT / \"reports\" / \"strategic_analysis\"\nOUTPUT_DIR.mkdir(parents=True, exist_ok=True)\n# Renk Paleti\nCOLORS = {\n    'primary': '#FF6B35', 'secondary': '#004E89', 'accent': '#F7B801',\n    'success': '#2BAE66', 'danger': '#FC5130', 'purple': '#9B59B6',\n    'teal': '#1ABC9C', 'navy': '#2C3E50'\n}\nprint(\"=\" * 100)\nprint(\"📊 STRATEJİK ANALİZ VE FULL GÖRSELLEŞTİRME BAŞLATILIYOR\")",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "COLORS",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "COLORS = {\n    'primary': '#FF6B35', 'secondary': '#004E89', 'accent': '#F7B801',\n    'success': '#2BAE66', 'danger': '#FC5130', 'purple': '#9B59B6',\n    'teal': '#1ABC9C', 'navy': '#2C3E50'\n}\nprint(\"=\" * 100)\nprint(\"📊 STRATEJİK ANALİZ VE FULL GÖRSELLEŞTİRME BAŞLATILIYOR\")\nprint(\"=\" * 100)\nif not DATA_FILE.exists():\n    raise FileNotFoundError(f\"❌ Veri bulunamadı: {DATA_FILE}\")",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "df = pd.read_csv(DATA_FILE)\ndf['date'] = pd.to_datetime(df['date'])\nprint(f\"✅ Veri Yüklendi: {len(df):,} kayıt\")\n# =============================================================================\n# 1. ÜLKE BAZLI KAYIP (WATERFALL)\n# =============================================================================\nprint(\"\\n[1/10] Ekonomik Kayıp Şelalesi (Waterfall)...\")\ncountry_loss = df.groupby('country')['economic_loss_usd'].sum().sort_values(ascending=False).head(15)\nmeasures = ['relative'] * len(country_loss)\nfig = go.Figure(go.Waterfall(",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "df['date']",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "df['date'] = pd.to_datetime(df['date'])\nprint(f\"✅ Veri Yüklendi: {len(df):,} kayıt\")\n# =============================================================================\n# 1. ÜLKE BAZLI KAYIP (WATERFALL)\n# =============================================================================\nprint(\"\\n[1/10] Ekonomik Kayıp Şelalesi (Waterfall)...\")\ncountry_loss = df.groupby('country')['economic_loss_usd'].sum().sort_values(ascending=False).head(15)\nmeasures = ['relative'] * len(country_loss)\nfig = go.Figure(go.Waterfall(\n    name=\"Economic Loss\", orientation=\"v\", measure=measures,",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "country_loss",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "country_loss = df.groupby('country')['economic_loss_usd'].sum().sort_values(ascending=False).head(15)\nmeasures = ['relative'] * len(country_loss)\nfig = go.Figure(go.Waterfall(\n    name=\"Economic Loss\", orientation=\"v\", measure=measures,\n    x=country_loss.index, y=country_loss.values,\n    text=[f'${val/1e9:.1f}B' for val in country_loss.values],\n    textposition=\"outside\",\n    connector={\"line\": {\"color\": \"rgb(63, 63, 63)\"}},\n    increasing={\"marker\": {\"color\": COLORS['danger']}},\n    decreasing={\"marker\": {\"color\": COLORS['success']}},",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "measures",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "measures = ['relative'] * len(country_loss)\nfig = go.Figure(go.Waterfall(\n    name=\"Economic Loss\", orientation=\"v\", measure=measures,\n    x=country_loss.index, y=country_loss.values,\n    text=[f'${val/1e9:.1f}B' for val in country_loss.values],\n    textposition=\"outside\",\n    connector={\"line\": {\"color\": \"rgb(63, 63, 63)\"}},\n    increasing={\"marker\": {\"color\": COLORS['danger']}},\n    decreasing={\"marker\": {\"color\": COLORS['success']}},\n))",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "fig",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "fig = go.Figure(go.Waterfall(\n    name=\"Economic Loss\", orientation=\"v\", measure=measures,\n    x=country_loss.index, y=country_loss.values,\n    text=[f'${val/1e9:.1f}B' for val in country_loss.values],\n    textposition=\"outside\",\n    connector={\"line\": {\"color\": \"rgb(63, 63, 63)\"}},\n    increasing={\"marker\": {\"color\": COLORS['danger']}},\n    decreasing={\"marker\": {\"color\": COLORS['success']}},\n))\nfig.update_layout(title=\"💰 1. Top 15 Countries by Economic Loss\", height=600)",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "disaster_cost",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "disaster_cost = df.groupby('disaster_type')['economic_loss_usd'].sum().sort_values(ascending=False)\nfig = make_subplots(rows=1, cols=2, specs=[[{'type': 'bar'}, {'type': 'pie'}]],\n                    subplot_titles=('Total Loss by Type', 'Distribution'))\nfig.add_trace(go.Bar(x=disaster_cost.values, y=disaster_cost.index, orientation='h', marker_color=COLORS['primary'], name='Loss'), row=1, col=1)\nfig.add_trace(go.Pie(labels=disaster_cost.index, values=disaster_cost.values, hole=0.3), row=1, col=2)\nfig.update_layout(title=\"🌪️ 2. Disaster Type Cost Analysis\", height=500)\nfig.write_html(OUTPUT_DIR / \"2_disaster_type_cost_comparison.html\")\n# =============================================================================\n# 3. ZAMANSAL TREND (TREND LINE)\n# =============================================================================",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "fig",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "fig = make_subplots(rows=1, cols=2, specs=[[{'type': 'bar'}, {'type': 'pie'}]],\n                    subplot_titles=('Total Loss by Type', 'Distribution'))\nfig.add_trace(go.Bar(x=disaster_cost.values, y=disaster_cost.index, orientation='h', marker_color=COLORS['primary'], name='Loss'), row=1, col=1)\nfig.add_trace(go.Pie(labels=disaster_cost.index, values=disaster_cost.values, hole=0.3), row=1, col=2)\nfig.update_layout(title=\"🌪️ 2. Disaster Type Cost Analysis\", height=500)\nfig.write_html(OUTPUT_DIR / \"2_disaster_type_cost_comparison.html\")\n# =============================================================================\n# 3. ZAMANSAL TREND (TREND LINE)\n# =============================================================================\nprint(\"\\n[3/10] Zamansal Trend Analizi...\")",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "yearly_data",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "yearly_data = df.groupby('year')[['economic_loss_usd', 'aid_amount_usd']].sum().reset_index()\nfig = go.Figure()\nfig.add_trace(go.Scatter(x=yearly_data['year'], y=yearly_data['economic_loss_usd'], mode='lines+markers', name='Economic Loss', line=dict(color=COLORS['danger'], width=3)))\nfig.add_trace(go.Scatter(x=yearly_data['year'], y=yearly_data['aid_amount_usd'], mode='lines+markers', name='Aid Provided', line=dict(color=COLORS['success'], width=3)))\nfig.add_trace(go.Scatter(x=yearly_data['year'], y=yearly_data['economic_loss_usd'], fill='tonexty', name='Aid Gap', line=dict(width=0), showlegend=False, opacity=0.1))\nfig.update_layout(title=\"📈 3. Economic Loss vs Aid Trends (2018-2024)\", height=500)\nfig.write_html(OUTPUT_DIR / \"3_temporal_economic_trend.html\")\n# =============================================================================\n# 4. YARDIM ETKİNLİĞİ (RADAR)\n# =============================================================================",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "fig",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "fig = go.Figure()\nfig.add_trace(go.Scatter(x=yearly_data['year'], y=yearly_data['economic_loss_usd'], mode='lines+markers', name='Economic Loss', line=dict(color=COLORS['danger'], width=3)))\nfig.add_trace(go.Scatter(x=yearly_data['year'], y=yearly_data['aid_amount_usd'], mode='lines+markers', name='Aid Provided', line=dict(color=COLORS['success'], width=3)))\nfig.add_trace(go.Scatter(x=yearly_data['year'], y=yearly_data['economic_loss_usd'], fill='tonexty', name='Aid Gap', line=dict(width=0), showlegend=False, opacity=0.1))\nfig.update_layout(title=\"📈 3. Economic Loss vs Aid Trends (2018-2024)\", height=500)\nfig.write_html(OUTPUT_DIR / \"3_temporal_economic_trend.html\")\n# =============================================================================\n# 4. YARDIM ETKİNLİĞİ (RADAR)\n# =============================================================================\nprint(\"\\n[4/10] Yardım Etkinliği (Radar)...\")",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "aid_stats",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "aid_stats = df[df['economic_loss_usd'] > 0].groupby('disaster_type')[['economic_loss_usd', 'aid_amount_usd']].sum()\naid_stats['efficiency'] = (aid_stats['aid_amount_usd'] / aid_stats['economic_loss_usd']) * 100\naid_stats = aid_stats.sort_values('efficiency', ascending=False)\nfig = go.Figure(go.Scatterpolar(r=aid_stats['efficiency'], theta=aid_stats.index, fill='toself', name='Aid Coverage %', line=dict(color=COLORS['secondary'])))\nfig.update_layout(polar=dict(radialaxis=dict(visible=True)), title=\"💼 4. Aid Efficiency by Disaster Type (%)\")\nfig.write_html(OUTPUT_DIR / \"4_aid_efficiency_radar.html\")\n# =============================================================================\n# 5. COĞRAFİ ETKİ HARİTASI (BUBBLE MAP - YENİLENMİŞ)\n# =============================================================================\nprint(\"\\n[5/10] Coğrafi Etki Haritası...\")",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "aid_stats['efficiency']",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "aid_stats['efficiency'] = (aid_stats['aid_amount_usd'] / aid_stats['economic_loss_usd']) * 100\naid_stats = aid_stats.sort_values('efficiency', ascending=False)\nfig = go.Figure(go.Scatterpolar(r=aid_stats['efficiency'], theta=aid_stats.index, fill='toself', name='Aid Coverage %', line=dict(color=COLORS['secondary'])))\nfig.update_layout(polar=dict(radialaxis=dict(visible=True)), title=\"💼 4. Aid Efficiency by Disaster Type (%)\")\nfig.write_html(OUTPUT_DIR / \"4_aid_efficiency_radar.html\")\n# =============================================================================\n# 5. COĞRAFİ ETKİ HARİTASI (BUBBLE MAP - YENİLENMİŞ)\n# =============================================================================\nprint(\"\\n[5/10] Coğrafi Etki Haritası...\")\ngrouped = df.groupby('country')",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "aid_stats",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "aid_stats = aid_stats.sort_values('efficiency', ascending=False)\nfig = go.Figure(go.Scatterpolar(r=aid_stats['efficiency'], theta=aid_stats.index, fill='toself', name='Aid Coverage %', line=dict(color=COLORS['secondary'])))\nfig.update_layout(polar=dict(radialaxis=dict(visible=True)), title=\"💼 4. Aid Efficiency by Disaster Type (%)\")\nfig.write_html(OUTPUT_DIR / \"4_aid_efficiency_radar.html\")\n# =============================================================================\n# 5. COĞRAFİ ETKİ HARİTASI (BUBBLE MAP - YENİLENMİŞ)\n# =============================================================================\nprint(\"\\n[5/10] Coğrafi Etki Haritası...\")\ngrouped = df.groupby('country')\ncountry_stats = pd.DataFrame({",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "fig",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "fig = go.Figure(go.Scatterpolar(r=aid_stats['efficiency'], theta=aid_stats.index, fill='toself', name='Aid Coverage %', line=dict(color=COLORS['secondary'])))\nfig.update_layout(polar=dict(radialaxis=dict(visible=True)), title=\"💼 4. Aid Efficiency by Disaster Type (%)\")\nfig.write_html(OUTPUT_DIR / \"4_aid_efficiency_radar.html\")\n# =============================================================================\n# 5. COĞRAFİ ETKİ HARİTASI (BUBBLE MAP - YENİLENMİŞ)\n# =============================================================================\nprint(\"\\n[5/10] Coğrafi Etki Haritası...\")\ngrouped = df.groupby('country')\ncountry_stats = pd.DataFrame({\n    'economic_loss_usd': grouped['economic_loss_usd'].sum(),",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "grouped",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "grouped = df.groupby('country')\ncountry_stats = pd.DataFrame({\n    'economic_loss_usd': grouped['economic_loss_usd'].sum(),\n    'casualties': grouped['casualties'].sum(),\n    'population_density': grouped['population_density'].mean() # Yeni Veri\n}).reset_index()\ncountry_stats['bubble_size'] = np.log1p(country_stats['economic_loss_usd'])\nfig = px.scatter_geo(\n    country_stats, locations=\"country\", locationmode='country names',\n    size=\"bubble_size\", color=\"casualties\",",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "country_stats",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "country_stats = pd.DataFrame({\n    'economic_loss_usd': grouped['economic_loss_usd'].sum(),\n    'casualties': grouped['casualties'].sum(),\n    'population_density': grouped['population_density'].mean() # Yeni Veri\n}).reset_index()\ncountry_stats['bubble_size'] = np.log1p(country_stats['economic_loss_usd'])\nfig = px.scatter_geo(\n    country_stats, locations=\"country\", locationmode='country names',\n    size=\"bubble_size\", color=\"casualties\",\n    hover_name=\"country\",",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "country_stats['bubble_size']",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "country_stats['bubble_size'] = np.log1p(country_stats['economic_loss_usd'])\nfig = px.scatter_geo(\n    country_stats, locations=\"country\", locationmode='country names',\n    size=\"bubble_size\", color=\"casualties\",\n    hover_name=\"country\",\n    hover_data={\"economic_loss_usd\": \":,.0f\", \"casualties\": \":,.0f\", \"population_density\": \":.1f\", \"bubble_size\": False},\n    title=\"🌍 5. Global Disaster Impact Map\", projection=\"natural earth\"\n)\nfig.write_html(OUTPUT_DIR / \"5_geographic_impact_map.html\")\n# =============================================================================",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "fig",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "fig = px.scatter_geo(\n    country_stats, locations=\"country\", locationmode='country names',\n    size=\"bubble_size\", color=\"casualties\",\n    hover_name=\"country\",\n    hover_data={\"economic_loss_usd\": \":,.0f\", \"casualties\": \":,.0f\", \"population_density\": \":.1f\", \"bubble_size\": False},\n    title=\"🌍 5. Global Disaster Impact Map\", projection=\"natural earth\"\n)\nfig.write_html(OUTPUT_DIR / \"5_geographic_impact_map.html\")\n# =============================================================================\n# 6. ROI ANALİZİ (BAR)",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "total_loss",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "total_loss = df['economic_loss_usd'].sum()\nscenarios = {'Early Warning': {'c': 0.02, 's': 0.08}, 'Resilience': {'c': 0.05, 's': 0.35}, 'Aid Boost': {'c': 0.03, 's': 0.10}}\nroi_data = [{'Scenario': k, 'Investment': total_loss*v['c'], 'Savings': total_loss*v['s'], 'ROI': v['s']/v['c']} for k,v in scenarios.items()]\nroi_df = pd.DataFrame(roi_data)\nfig = make_subplots(rows=1, cols=2, specs=[[{'type': 'bar'}, {'type': 'bar'}]], subplot_titles=(\"Investment vs Savings\", \"ROI Multiplier\"))\nfig.add_trace(go.Bar(x=roi_df['Scenario'], y=roi_df['Investment'], name='Invest', marker_color=COLORS['danger']), row=1, col=1)\nfig.add_trace(go.Bar(x=roi_df['Scenario'], y=roi_df['Savings'], name='Save', marker_color=COLORS['success']), row=1, col=1)\nfig.add_trace(go.Bar(x=roi_df['Scenario'], y=roi_df['ROI'], name='ROI', marker_color=COLORS['accent'], text=roi_df['ROI'].round(1), textposition='auto'), row=1, col=2)\nfig.update_layout(title=\"💰 6. ROI Analysis\", height=500)\nfig.write_html(OUTPUT_DIR / \"6_roi_investment_analysis.html\")",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "scenarios",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "scenarios = {'Early Warning': {'c': 0.02, 's': 0.08}, 'Resilience': {'c': 0.05, 's': 0.35}, 'Aid Boost': {'c': 0.03, 's': 0.10}}\nroi_data = [{'Scenario': k, 'Investment': total_loss*v['c'], 'Savings': total_loss*v['s'], 'ROI': v['s']/v['c']} for k,v in scenarios.items()]\nroi_df = pd.DataFrame(roi_data)\nfig = make_subplots(rows=1, cols=2, specs=[[{'type': 'bar'}, {'type': 'bar'}]], subplot_titles=(\"Investment vs Savings\", \"ROI Multiplier\"))\nfig.add_trace(go.Bar(x=roi_df['Scenario'], y=roi_df['Investment'], name='Invest', marker_color=COLORS['danger']), row=1, col=1)\nfig.add_trace(go.Bar(x=roi_df['Scenario'], y=roi_df['Savings'], name='Save', marker_color=COLORS['success']), row=1, col=1)\nfig.add_trace(go.Bar(x=roi_df['Scenario'], y=roi_df['ROI'], name='ROI', marker_color=COLORS['accent'], text=roi_df['ROI'].round(1), textposition='auto'), row=1, col=2)\nfig.update_layout(title=\"💰 6. ROI Analysis\", height=500)\nfig.write_html(OUTPUT_DIR / \"6_roi_investment_analysis.html\")\n# =============================================================================",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "roi_data",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "roi_data = [{'Scenario': k, 'Investment': total_loss*v['c'], 'Savings': total_loss*v['s'], 'ROI': v['s']/v['c']} for k,v in scenarios.items()]\nroi_df = pd.DataFrame(roi_data)\nfig = make_subplots(rows=1, cols=2, specs=[[{'type': 'bar'}, {'type': 'bar'}]], subplot_titles=(\"Investment vs Savings\", \"ROI Multiplier\"))\nfig.add_trace(go.Bar(x=roi_df['Scenario'], y=roi_df['Investment'], name='Invest', marker_color=COLORS['danger']), row=1, col=1)\nfig.add_trace(go.Bar(x=roi_df['Scenario'], y=roi_df['Savings'], name='Save', marker_color=COLORS['success']), row=1, col=1)\nfig.add_trace(go.Bar(x=roi_df['Scenario'], y=roi_df['ROI'], name='ROI', marker_color=COLORS['accent'], text=roi_df['ROI'].round(1), textposition='auto'), row=1, col=2)\nfig.update_layout(title=\"💰 6. ROI Analysis\", height=500)\nfig.write_html(OUTPUT_DIR / \"6_roi_investment_analysis.html\")\n# =============================================================================\n# 7. ŞİDDET vs KAYIP (SCATTER)",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "roi_df",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "roi_df = pd.DataFrame(roi_data)\nfig = make_subplots(rows=1, cols=2, specs=[[{'type': 'bar'}, {'type': 'bar'}]], subplot_titles=(\"Investment vs Savings\", \"ROI Multiplier\"))\nfig.add_trace(go.Bar(x=roi_df['Scenario'], y=roi_df['Investment'], name='Invest', marker_color=COLORS['danger']), row=1, col=1)\nfig.add_trace(go.Bar(x=roi_df['Scenario'], y=roi_df['Savings'], name='Save', marker_color=COLORS['success']), row=1, col=1)\nfig.add_trace(go.Bar(x=roi_df['Scenario'], y=roi_df['ROI'], name='ROI', marker_color=COLORS['accent'], text=roi_df['ROI'].round(1), textposition='auto'), row=1, col=2)\nfig.update_layout(title=\"💰 6. ROI Analysis\", height=500)\nfig.write_html(OUTPUT_DIR / \"6_roi_investment_analysis.html\")\n# =============================================================================\n# 7. ŞİDDET vs KAYIP (SCATTER)\n# =============================================================================",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "fig",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "fig = make_subplots(rows=1, cols=2, specs=[[{'type': 'bar'}, {'type': 'bar'}]], subplot_titles=(\"Investment vs Savings\", \"ROI Multiplier\"))\nfig.add_trace(go.Bar(x=roi_df['Scenario'], y=roi_df['Investment'], name='Invest', marker_color=COLORS['danger']), row=1, col=1)\nfig.add_trace(go.Bar(x=roi_df['Scenario'], y=roi_df['Savings'], name='Save', marker_color=COLORS['success']), row=1, col=1)\nfig.add_trace(go.Bar(x=roi_df['Scenario'], y=roi_df['ROI'], name='ROI', marker_color=COLORS['accent'], text=roi_df['ROI'].round(1), textposition='auto'), row=1, col=2)\nfig.update_layout(title=\"💰 6. ROI Analysis\", height=500)\nfig.write_html(OUTPUT_DIR / \"6_roi_investment_analysis.html\")\n# =============================================================================\n# 7. ŞİDDET vs KAYIP (SCATTER)\n# =============================================================================\nprint(\"\\n[7/10] Şiddet vs Kayıp İlişkisi...\")",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "sample_df",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "sample_df = df.sample(n=min(5000, len(df)), random_state=42)\nfig = px.scatter(\n    sample_df, x='severity_index', y='economic_loss_usd', color='disaster_type',\n    size='casualties', hover_data=['country', 'date'], log_y=True,\n    title=\"⚠️ 7. Severity vs Economic Loss Relationship\"\n)\nfig.write_html(OUTPUT_DIR / \"7_severity_economic_scatter.html\")\n# =============================================================================\n# 8. EN PAHALI 20 AFET (BAR)\n# =============================================================================",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "fig",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "fig = px.scatter(\n    sample_df, x='severity_index', y='economic_loss_usd', color='disaster_type',\n    size='casualties', hover_data=['country', 'date'], log_y=True,\n    title=\"⚠️ 7. Severity vs Economic Loss Relationship\"\n)\nfig.write_html(OUTPUT_DIR / \"7_severity_economic_scatter.html\")\n# =============================================================================\n# 8. EN PAHALI 20 AFET (BAR)\n# =============================================================================\nprint(\"\\n[8/10] En Pahalı 20 Afet...\")",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "top20",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "top20 = df.nlargest(20, 'economic_loss_usd').copy()\ntop20['label'] = top20['disaster_type'] + ' - ' + top20['country'] + ' (' + top20['date'].dt.strftime('%Y') + ')'\nfig = go.Figure(go.Bar(\n    x=top20['economic_loss_usd'], y=top20['label'], orientation='h',\n    marker=dict(color=top20['severity_index'], colorscale='Reds', colorbar=dict(title=\"Severity\"))\n))\nfig.update_layout(title=\"🔥 8. Top 20 Most Expensive Disasters\", height=800, yaxis={'categoryorder':'total ascending'})\nfig.write_html(OUTPUT_DIR / \"8_top_20_expensive_disasters.html\")\n# =============================================================================\n# 9. YARDIM AÇIĞI (GAP WATERFALL)",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "top20['label']",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "top20['label'] = top20['disaster_type'] + ' - ' + top20['country'] + ' (' + top20['date'].dt.strftime('%Y') + ')'\nfig = go.Figure(go.Bar(\n    x=top20['economic_loss_usd'], y=top20['label'], orientation='h',\n    marker=dict(color=top20['severity_index'], colorscale='Reds', colorbar=dict(title=\"Severity\"))\n))\nfig.update_layout(title=\"🔥 8. Top 20 Most Expensive Disasters\", height=800, yaxis={'categoryorder':'total ascending'})\nfig.write_html(OUTPUT_DIR / \"8_top_20_expensive_disasters.html\")\n# =============================================================================\n# 9. YARDIM AÇIĞI (GAP WATERFALL)\n# =============================================================================",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "fig",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "fig = go.Figure(go.Bar(\n    x=top20['economic_loss_usd'], y=top20['label'], orientation='h',\n    marker=dict(color=top20['severity_index'], colorscale='Reds', colorbar=dict(title=\"Severity\"))\n))\nfig.update_layout(title=\"🔥 8. Top 20 Most Expensive Disasters\", height=800, yaxis={'categoryorder':'total ascending'})\nfig.write_html(OUTPUT_DIR / \"8_top_20_expensive_disasters.html\")\n# =============================================================================\n# 9. YARDIM AÇIĞI (GAP WATERFALL)\n# =============================================================================\nprint(\"\\n[9/10] Yardım Açığı Analizi...\")",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "gap_data",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "gap_data = df.groupby('disaster_type')[['economic_loss_usd', 'aid_amount_usd']].sum()\ngap_data['aid_gap'] = gap_data['economic_loss_usd'] - gap_data['aid_amount_usd']\ngap_data = gap_data.sort_values('aid_gap', ascending=False)\nfig = go.Figure(go.Waterfall(\n    name=\"Aid Gap\", orientation=\"v\", measure=['relative']*len(gap_data),\n    x=gap_data.index, y=gap_data['aid_gap'],\n    connector={\"line\": {\"color\": \"rgb(63, 63, 63)\"}},\n    increasing={\"marker\": {\"color\": COLORS['navy']}}\n))\nfig.update_layout(title=\"📉 9. Aid Gap Analysis (Unmet Needs)\", height=600)",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "gap_data['aid_gap']",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "gap_data['aid_gap'] = gap_data['economic_loss_usd'] - gap_data['aid_amount_usd']\ngap_data = gap_data.sort_values('aid_gap', ascending=False)\nfig = go.Figure(go.Waterfall(\n    name=\"Aid Gap\", orientation=\"v\", measure=['relative']*len(gap_data),\n    x=gap_data.index, y=gap_data['aid_gap'],\n    connector={\"line\": {\"color\": \"rgb(63, 63, 63)\"}},\n    increasing={\"marker\": {\"color\": COLORS['navy']}}\n))\nfig.update_layout(title=\"📉 9. Aid Gap Analysis (Unmet Needs)\", height=600)\nfig.write_html(OUTPUT_DIR / \"9_aid_gap_waterfall.html\")",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "gap_data",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "gap_data = gap_data.sort_values('aid_gap', ascending=False)\nfig = go.Figure(go.Waterfall(\n    name=\"Aid Gap\", orientation=\"v\", measure=['relative']*len(gap_data),\n    x=gap_data.index, y=gap_data['aid_gap'],\n    connector={\"line\": {\"color\": \"rgb(63, 63, 63)\"}},\n    increasing={\"marker\": {\"color\": COLORS['navy']}}\n))\nfig.update_layout(title=\"📉 9. Aid Gap Analysis (Unmet Needs)\", height=600)\nfig.write_html(OUTPUT_DIR / \"9_aid_gap_waterfall.html\")\n# =============================================================================",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "fig",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "fig = go.Figure(go.Waterfall(\n    name=\"Aid Gap\", orientation=\"v\", measure=['relative']*len(gap_data),\n    x=gap_data.index, y=gap_data['aid_gap'],\n    connector={\"line\": {\"color\": \"rgb(63, 63, 63)\"}},\n    increasing={\"marker\": {\"color\": COLORS['navy']}}\n))\nfig.update_layout(title=\"📉 9. Aid Gap Analysis (Unmet Needs)\", height=600)\nfig.write_html(OUTPUT_DIR / \"9_aid_gap_waterfall.html\")\n# =============================================================================\n# 10. İYİLEŞME MALİYETİ ZAMAN ÇİZELGESİ (LINE)",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "df['daily_recovery_cost']",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "df['daily_recovery_cost'] = df['economic_loss_usd'] / (df['recovery_days'] + 1)\ndf['year_month'] = df['date'].dt.to_period('M').astype(str)\nmonthly_recovery = df.groupby('year_month')['daily_recovery_cost'].sum().reset_index()\nfig = go.Figure()\nfig.add_trace(go.Scatter(\n    x=monthly_recovery['year_month'], y=monthly_recovery['daily_recovery_cost'],\n    mode='lines', fill='tozeroy', line=dict(color=COLORS['purple']), name='Recovery Cost'\n))\nfig.update_layout(title=\"⏱️ 10. Recovery Cost Timeline (Monthly)\", height=500)\nfig.write_html(OUTPUT_DIR / \"10_recovery_cost_timeline.html\")",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "df['year_month']",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "df['year_month'] = df['date'].dt.to_period('M').astype(str)\nmonthly_recovery = df.groupby('year_month')['daily_recovery_cost'].sum().reset_index()\nfig = go.Figure()\nfig.add_trace(go.Scatter(\n    x=monthly_recovery['year_month'], y=monthly_recovery['daily_recovery_cost'],\n    mode='lines', fill='tozeroy', line=dict(color=COLORS['purple']), name='Recovery Cost'\n))\nfig.update_layout(title=\"⏱️ 10. Recovery Cost Timeline (Monthly)\", height=500)\nfig.write_html(OUTPUT_DIR / \"10_recovery_cost_timeline.html\")\nprint(\"\\n\" + \"=\" * 100)",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "monthly_recovery",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "monthly_recovery = df.groupby('year_month')['daily_recovery_cost'].sum().reset_index()\nfig = go.Figure()\nfig.add_trace(go.Scatter(\n    x=monthly_recovery['year_month'], y=monthly_recovery['daily_recovery_cost'],\n    mode='lines', fill='tozeroy', line=dict(color=COLORS['purple']), name='Recovery Cost'\n))\nfig.update_layout(title=\"⏱️ 10. Recovery Cost Timeline (Monthly)\", height=500)\nfig.write_html(OUTPUT_DIR / \"10_recovery_cost_timeline.html\")\nprint(\"\\n\" + \"=\" * 100)\nprint(\"✅ TÜM GÖRSELLEŞTİRMELER TAMAMLANDI!\")",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "fig",
+        "kind": 5,
+        "importPath": "notebooks.02_Strategic_Analysis",
+        "description": "notebooks.02_Strategic_Analysis",
+        "peekOfCode": "fig = go.Figure()\nfig.add_trace(go.Scatter(\n    x=monthly_recovery['year_month'], y=monthly_recovery['daily_recovery_cost'],\n    mode='lines', fill='tozeroy', line=dict(color=COLORS['purple']), name='Recovery Cost'\n))\nfig.update_layout(title=\"⏱️ 10. Recovery Cost Timeline (Monthly)\", height=500)\nfig.write_html(OUTPUT_DIR / \"10_recovery_cost_timeline.html\")\nprint(\"\\n\" + \"=\" * 100)\nprint(\"✅ TÜM GÖRSELLEŞTİRMELER TAMAMLANDI!\")\nprint(f\"📂 Raporlar: {OUTPUT_DIR}\")",
+        "detail": "notebooks.02_Strategic_Analysis",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "kind": 6,
+        "importPath": "notebooks.03_Model_01_SeverityPrediction",
+        "description": "notebooks.03_Model_01_SeverityPrediction",
+        "peekOfCode": "class Config:\n    try:\n        PROJECT_ROOT = Path(__file__).resolve().parents[1]\n    except NameError:\n        PROJECT_ROOT = Path(r\"D:\\Miuul Final Project\\GlobalDisaster\")\n    INPUT_FILE = PROJECT_ROOT / 'data' / 'processed' / 'disaster_data_final.csv'\n    OUTPUT_DIR = PROJECT_ROOT / 'models'\n    REPORT_DIR = PROJECT_ROOT / 'reports' / 'model_01'\n    RANDOM_STATE = 42\n    TEST_SIZE = 0.2",
+        "detail": "notebooks.03_Model_01_SeverityPrediction",
+        "documentation": {}
+    },
+    {
+        "label": "run_model_pipeline",
+        "kind": 2,
+        "importPath": "notebooks.03_Model_01_SeverityPrediction",
+        "description": "notebooks.03_Model_01_SeverityPrediction",
+        "peekOfCode": "def run_model_pipeline():\n    Config.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)\n    Config.REPORT_DIR.mkdir(parents=True, exist_ok=True)\n    print(\"=\" * 80)\n    print(\"🤖 MODEL 01: SEVERITY PREDICTION BAŞLATILIYOR\")\n    print(\"=\" * 80)\n    # --- 1. VERİ YÜKLEME ---\n    if not Config.INPUT_FILE.exists():\n        raise FileNotFoundError(f\"❌ Veri bulunamadı: {Config.INPUT_FILE}\")\n    df = pd.read_csv(Config.INPUT_FILE)",
+        "detail": "notebooks.03_Model_01_SeverityPrediction",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ['FOR_DISABLE_CONSOLE_CTRL_HANDLER']",
+        "kind": 5,
+        "importPath": "notebooks.03_Model_01_SeverityPrediction",
+        "description": "notebooks.03_Model_01_SeverityPrediction",
+        "peekOfCode": "os.environ['FOR_DISABLE_CONSOLE_CTRL_HANDLER'] = '1'\nos.environ['OMP_NUM_THREADS'] = '1'\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.metrics import (\n    classification_report, confusion_matrix, f1_score,\n    accuracy_score\n)\nfrom imblearn.over_sampling import SMOTE\nfrom xgboost import XGBClassifier",
+        "detail": "notebooks.03_Model_01_SeverityPrediction",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ['OMP_NUM_THREADS']",
+        "kind": 5,
+        "importPath": "notebooks.03_Model_01_SeverityPrediction",
+        "description": "notebooks.03_Model_01_SeverityPrediction",
+        "peekOfCode": "os.environ['OMP_NUM_THREADS'] = '1'\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.metrics import (\n    classification_report, confusion_matrix, f1_score,\n    accuracy_score\n)\nfrom imblearn.over_sampling import SMOTE\nfrom xgboost import XGBClassifier\nfrom lightgbm import LGBMClassifier",
+        "detail": "notebooks.03_Model_01_SeverityPrediction",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "kind": 6,
+        "importPath": "notebooks.03_Model_02_RiskClustering",
+        "description": "notebooks.03_Model_02_RiskClustering",
+        "peekOfCode": "class Config:\n    try:\n        PROJECT_ROOT = Path(__file__).resolve().parents[1]\n    except NameError:\n        PROJECT_ROOT = Path(r\"D:\\Miuul Final Project\\GlobalDisaster\")\n    INPUT_FILE = PROJECT_ROOT / 'data' / 'processed' / 'disaster_data_final.csv'\n    OUTPUT_DIR = PROJECT_ROOT / 'models'\n    REPORT_DIR = PROJECT_ROOT / 'reports' / 'model_02_clustering'\n    N_CLUSTERS = 3\n    RANDOM_STATE = 42",
+        "detail": "notebooks.03_Model_02_RiskClustering",
+        "documentation": {}
+    },
+    {
+        "label": "run_clustering_pipeline",
+        "kind": 2,
+        "importPath": "notebooks.03_Model_02_RiskClustering",
+        "description": "notebooks.03_Model_02_RiskClustering",
+        "peekOfCode": "def run_clustering_pipeline():\n    Config.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)\n    Config.REPORT_DIR.mkdir(parents=True, exist_ok=True)\n    print(\"=\" * 80)\n    print(\"🌍 MODEL 04: RISK CLUSTERING BAŞLATILIYOR\")\n    print(\"=\" * 80)\n    if not Config.INPUT_FILE.exists():\n        raise FileNotFoundError(f\"❌ Veri bulunamadı: {Config.INPUT_FILE}\")\n    df = pd.read_csv(Config.INPUT_FILE)\n    print(f\"✅ Veri yüklendi: {len(df):,} satır\")",
+        "detail": "notebooks.03_Model_02_RiskClustering",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ['LOKY_MAX_CPU_COUNT']",
+        "kind": 5,
+        "importPath": "notebooks.03_Model_02_RiskClustering",
+        "description": "notebooks.03_Model_02_RiskClustering",
+        "peekOfCode": "os.environ['LOKY_MAX_CPU_COUNT'] = '1'\nos.environ['OMP_NUM_THREADS'] = '1'\nwarnings.filterwarnings('ignore')\nclass Config:\n    try:\n        PROJECT_ROOT = Path(__file__).resolve().parents[1]\n    except NameError:\n        PROJECT_ROOT = Path(r\"D:\\Miuul Final Project\\GlobalDisaster\")\n    INPUT_FILE = PROJECT_ROOT / 'data' / 'processed' / 'disaster_data_final.csv'\n    OUTPUT_DIR = PROJECT_ROOT / 'models'",
+        "detail": "notebooks.03_Model_02_RiskClustering",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ['OMP_NUM_THREADS']",
+        "kind": 5,
+        "importPath": "notebooks.03_Model_02_RiskClustering",
+        "description": "notebooks.03_Model_02_RiskClustering",
+        "peekOfCode": "os.environ['OMP_NUM_THREADS'] = '1'\nwarnings.filterwarnings('ignore')\nclass Config:\n    try:\n        PROJECT_ROOT = Path(__file__).resolve().parents[1]\n    except NameError:\n        PROJECT_ROOT = Path(r\"D:\\Miuul Final Project\\GlobalDisaster\")\n    INPUT_FILE = PROJECT_ROOT / 'data' / 'processed' / 'disaster_data_final.csv'\n    OUTPUT_DIR = PROJECT_ROOT / 'models'\n    REPORT_DIR = PROJECT_ROOT / 'reports' / 'model_02_clustering'",
+        "detail": "notebooks.03_Model_02_RiskClustering",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "kind": 6,
+        "importPath": "notebooks.03_Model_03_TrendForecasting",
+        "description": "notebooks.03_Model_03_TrendForecasting",
+        "peekOfCode": "class Config:\n    try:\n        PROJECT_ROOT = Path(__file__).resolve().parents[1]\n    except NameError:\n        PROJECT_ROOT = Path(r\"D:\\Miuul Final Project\\GlobalDisaster\")\n    INPUT_FILE = PROJECT_ROOT / 'data' / 'processed' / 'disaster_data_final.csv'\n    OUTPUT_DIR = PROJECT_ROOT / 'models'\n    REPORT_DIR = PROJECT_ROOT / 'reports' / 'model_03_trend'\n    FORECAST_MONTHS = 12  # Gelecek 12 ayı tahmin et\ndef run_trend_pipeline():",
+        "detail": "notebooks.03_Model_03_TrendForecasting",
+        "documentation": {}
+    },
+    {
+        "label": "run_trend_pipeline",
+        "kind": 2,
+        "importPath": "notebooks.03_Model_03_TrendForecasting",
+        "description": "notebooks.03_Model_03_TrendForecasting",
+        "peekOfCode": "def run_trend_pipeline():\n    Config.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)\n    Config.REPORT_DIR.mkdir(parents=True, exist_ok=True)\n    print(\"=\" * 80)\n    print(\"📈 MODEL 05: TREND FORECASTING & MOMENTUM ANALYSIS BAŞLATILIYOR\")\n    print(\"=\" * 80)\n    # 1. VERİ YÜKLEME\n    if not Config.INPUT_FILE.exists():\n        raise FileNotFoundError(f\"❌ Veri bulunamadı: {Config.INPUT_FILE}\")\n    df = pd.read_csv(Config.INPUT_FILE)",
+        "detail": "notebooks.03_Model_03_TrendForecasting",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ['FOR_DISABLE_CONSOLE_CTRL_HANDLER']",
+        "kind": 5,
+        "importPath": "notebooks.03_Model_03_TrendForecasting",
+        "description": "notebooks.03_Model_03_TrendForecasting",
+        "peekOfCode": "os.environ['FOR_DISABLE_CONSOLE_CTRL_HANDLER'] = '1'\nwarnings.filterwarnings('ignore')\nclass Config:\n    try:\n        PROJECT_ROOT = Path(__file__).resolve().parents[1]\n    except NameError:\n        PROJECT_ROOT = Path(r\"D:\\Miuul Final Project\\GlobalDisaster\")\n    INPUT_FILE = PROJECT_ROOT / 'data' / 'processed' / 'disaster_data_final.csv'\n    OUTPUT_DIR = PROJECT_ROOT / 'models'\n    REPORT_DIR = PROJECT_ROOT / 'reports' / 'model_03_trend'",
+        "detail": "notebooks.03_Model_03_TrendForecasting",
+        "documentation": {}
+    },
+    {
+        "label": "load_data",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def load_data():\n    if not DATA_PATH.exists(): return None, {}\n    df = pd.read_csv(DATA_PATH)\n    country_meta = df.sort_values('year', ascending=False).groupby('country').first()\n    cols = ['region', 'income_group', 'population', 'population_density', 'surface_area_km2']\n    for c in cols:\n        if c not in country_meta.columns: country_meta[c] = np.nan\n    meta_dict = country_meta[cols].to_dict('index')\n    # Fallback verilerini ana sözlüğe yedir (Unknown düzeltmesi)\n    for ctry, data in FALLBACK_METADATA.items():",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "show_html_report",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def show_html_report(file_path, height=600):\n    try:\n        with open(file_path, 'r', encoding='utf-8') as f:\n            components.html(f.read(), height=height, scrolling=True)\n    except:\n        st.info(f\"Grafik bekleniyor: {file_path.name}\")\n# --- SIDEBAR MENU ---\nwith st.sidebar:\n    st.image(\"https://cdn-icons-png.flaticon.com/512/2776/2776000.png\", width=80)\n    st.title(\"Resque Data\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "PROJECT_ROOT",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "PROJECT_ROOT = Path(__file__).parent\nDATA_PATH = PROJECT_ROOT / \"data/processed/disaster_data_final.csv\"\nMODELS_DIR = PROJECT_ROOT / \"models\"\nREPORTS_DIR = PROJECT_ROOT / \"reports\"\n# --- KURTARICI VERİ SETİ (FALLBACK) ---\n# API veya CSV çalışmazsa bu veriler devreye girer. UNKNOWN hatasını çözer.\nFALLBACK_METADATA = {\n    \"Turkey\": {\"region\": \"Europe & Central Asia\", \"income_group\": \"Upper middle income\", \"population\": 85000000,\n               \"population_density\": 110, \"surface_area_km2\": 783562},\n    \"USA\": {\"region\": \"North America\", \"income_group\": \"High income\", \"population\": 331000000, \"population_density\": 36,",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "DATA_PATH",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "DATA_PATH = PROJECT_ROOT / \"data/processed/disaster_data_final.csv\"\nMODELS_DIR = PROJECT_ROOT / \"models\"\nREPORTS_DIR = PROJECT_ROOT / \"reports\"\n# --- KURTARICI VERİ SETİ (FALLBACK) ---\n# API veya CSV çalışmazsa bu veriler devreye girer. UNKNOWN hatasını çözer.\nFALLBACK_METADATA = {\n    \"Turkey\": {\"region\": \"Europe & Central Asia\", \"income_group\": \"Upper middle income\", \"population\": 85000000,\n               \"population_density\": 110, \"surface_area_km2\": 783562},\n    \"USA\": {\"region\": \"North America\", \"income_group\": \"High income\", \"population\": 331000000, \"population_density\": 36,\n            \"surface_area_km2\": 9833520},",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "MODELS_DIR",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "MODELS_DIR = PROJECT_ROOT / \"models\"\nREPORTS_DIR = PROJECT_ROOT / \"reports\"\n# --- KURTARICI VERİ SETİ (FALLBACK) ---\n# API veya CSV çalışmazsa bu veriler devreye girer. UNKNOWN hatasını çözer.\nFALLBACK_METADATA = {\n    \"Turkey\": {\"region\": \"Europe & Central Asia\", \"income_group\": \"Upper middle income\", \"population\": 85000000,\n               \"population_density\": 110, \"surface_area_km2\": 783562},\n    \"USA\": {\"region\": \"North America\", \"income_group\": \"High income\", \"population\": 331000000, \"population_density\": 36,\n            \"surface_area_km2\": 9833520},\n    \"Japan\": {\"region\": \"East Asia & Pacific\", \"income_group\": \"High income\", \"population\": 125000000,",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "REPORTS_DIR",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "REPORTS_DIR = PROJECT_ROOT / \"reports\"\n# --- KURTARICI VERİ SETİ (FALLBACK) ---\n# API veya CSV çalışmazsa bu veriler devreye girer. UNKNOWN hatasını çözer.\nFALLBACK_METADATA = {\n    \"Turkey\": {\"region\": \"Europe & Central Asia\", \"income_group\": \"Upper middle income\", \"population\": 85000000,\n               \"population_density\": 110, \"surface_area_km2\": 783562},\n    \"USA\": {\"region\": \"North America\", \"income_group\": \"High income\", \"population\": 331000000, \"population_density\": 36,\n            \"surface_area_km2\": 9833520},\n    \"Japan\": {\"region\": \"East Asia & Pacific\", \"income_group\": \"High income\", \"population\": 125000000,\n              \"population_density\": 338, \"surface_area_km2\": 377975},",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "FALLBACK_METADATA",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "FALLBACK_METADATA = {\n    \"Turkey\": {\"region\": \"Europe & Central Asia\", \"income_group\": \"Upper middle income\", \"population\": 85000000,\n               \"population_density\": 110, \"surface_area_km2\": 783562},\n    \"USA\": {\"region\": \"North America\", \"income_group\": \"High income\", \"population\": 331000000, \"population_density\": 36,\n            \"surface_area_km2\": 9833520},\n    \"Japan\": {\"region\": \"East Asia & Pacific\", \"income_group\": \"High income\", \"population\": 125000000,\n              \"population_density\": 338, \"surface_area_km2\": 377975},\n    \"China\": {\"region\": \"East Asia & Pacific\", \"income_group\": \"Upper middle income\", \"population\": 1400000000,\n              \"population_density\": 148, \"surface_area_km2\": 9596960},\n    \"India\": {\"region\": \"South Asia\", \"income_group\": \"Lower middle income\", \"population\": 1380000000,",
+        "detail": "app",
+        "documentation": {}
+    }
+]

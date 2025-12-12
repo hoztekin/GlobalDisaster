@@ -1,5 +1,5 @@
 # =============================================================================
-# MODEL 02: GEOGRAPHIC RISK CLUSTERING (K-Means)
+# MODEL 02: GEOGRAPHIC RISK CLUSTERING (K-Means) - FIXED VERSION
 # =============================================================================
 
 import os
@@ -12,7 +12,7 @@ from pathlib import Path
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 
-# Windows Çökme Koruması (Kritik)
+# Windows Çökme Koruması
 os.environ['LOKY_MAX_CPU_COUNT'] = '1'
 os.environ['OMP_NUM_THREADS'] = '1'
 
@@ -38,7 +38,7 @@ def run_clustering_pipeline():
     Config.REPORT_DIR.mkdir(parents=True, exist_ok=True)
 
     print("=" * 80)
-    print("🌍 MODEL 04: RISK CLUSTERING BAŞLATILIYOR")
+    print("🌍 MODEL 02: RISK CLUSTERING (FIXED VERSION) BAŞLATILIYOR")
     print("=" * 80)
 
     if not Config.INPUT_FILE.exists():
@@ -74,9 +74,17 @@ def run_clustering_pipeline():
     clusters = kmeans.fit_predict(X_scaled)
     country_profile['cluster_id'] = clusters
 
-    # Risk Etiketleme
-    cluster_severity = country_profile.groupby('cluster_id')['avg_severity'].mean().sort_values().index
-    remap = {old: new for new, old in enumerate(cluster_severity)}
+    print("\n📊 Composite Risk Score Hesaplanıyor...")
+    country_profile['risk_score'] = (
+            (country_profile['frequency'] / country_profile['frequency'].max()) * 0.35 +  # 35%: frequency
+            (country_profile['avg_severity'] / country_profile['avg_severity'].max()) * 0.35 +  # 35%: severity
+            (country_profile['log_loss'] / country_profile['log_loss'].max()) * 0.20 +  # 20%: economic loss
+            (country_profile['log_casualties'] / country_profile['log_casualties'].max()) * 0.10  # 10%: casualties
+    )
+
+    # Cluster'ı composite risk_score'a göre sırala
+    cluster_risk = country_profile.groupby('cluster_id')['risk_score'].mean().sort_values().index
+    remap = {old: new for new, old in enumerate(cluster_risk)}
     country_profile['risk_level'] = country_profile['cluster_id'].map(remap)
 
     risk_labels = {0: 'Low Risk', 1: 'Moderate Risk', 2: 'High Risk'}
@@ -85,12 +93,23 @@ def run_clustering_pipeline():
     print("\n📊 Risk Dağılımı:")
     print(country_profile['risk_label'].value_counts())
 
-    # Görselleştirme
+   # Görselleştirme - Interactive Tooltip ile
     fig = px.choropleth(
         country_profile, locations="country", locationmode='country names',
         color="risk_label", title="🌍 Global Disaster Risk Clusters",
-        color_discrete_map={'Low Risk': '#2ecc71', 'Moderate Risk': '#f1c40f', 'High Risk': '#e74c3c'}
+        color_discrete_map={'Low Risk': '#2ecc71', 'Moderate Risk': '#f1c40f', 'High Risk': '#e74c3c',
+                            'Critical Risk': '#d70015'},
+        hover_data={
+            'country': True,
+            'risk_label': True,
+            'frequency': ':.0f',
+            'avg_severity': ':.2f',
+            'log_loss': ':.2f',
+            'risk_score': ':.3f'
+        },
+        hover_name='country'
     )
+    fig.update_layout(height=700, width=1400, showlegend=True)
     fig.write_html(Config.REPORT_DIR / "risk_cluster_map.html")
 
     # Kayıt
@@ -99,7 +118,13 @@ def run_clustering_pipeline():
         pickle.dump(kmeans, f)
 
     print(f"\n💾 Harita ve Veri Kaydedildi: {Config.REPORT_DIR}")
-    print("✅ MODEL 04 SÜRECİ TAMAMLANDI!")
+    print("✅ MODEL 02 SÜRECİ TAMAMLANDI (FIXED)!")
+
+    # Debug: Top 10 country risk scores
+    print("\n📈 Top 10 Ülke Risk Scores:")
+    top10 = country_profile.nlargest(10, 'risk_score')[
+        ['country', 'risk_score', 'frequency', 'avg_severity', 'risk_label']]
+    print(top10.to_string())
 
 
 if __name__ == '__main__':
