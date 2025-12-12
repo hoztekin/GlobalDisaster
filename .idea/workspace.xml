@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d48e280a-81e6-4635-aae7-cb94ed86c606" name="Changes" comment="updated docker-publish" />
+    <list default="true" id="d48e280a-81e6-4635-aae7-cb94ed86c606" name="Changes" comment="updated requirement files">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -165,7 +167,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765541239885</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="updated requirement files">
+      <option name="closed" value="true" />
+      <created>1765541445712</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1765541445712</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -188,6 +198,7 @@
     <MESSAGE value="Updated Files" />
     <MESSAGE value="updated workflow" />
     <MESSAGE value="updated docker-publish" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated docker-publish" />
+    <MESSAGE value="updated requirement files" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated requirement files" />
   </component>
 </project>
