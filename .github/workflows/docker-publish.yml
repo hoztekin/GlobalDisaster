@@ -2,7 +2,7 @@ name: Build and Push Docker Image
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main" , "master"]
 
 env:
   REGISTRY: ghcr.io
@@ -26,7 +26,6 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
-          # GITHUB_TOKEN otomatik oluşur, ekstra secret eklemenize gerek yok
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract metadata (tags, labels) for Docker
@@ -34,7 +33,6 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          # Hem 'latest' hem de commit SHA ile etiketler
           tags: |
             type=raw,value=latest
             type=sha,format=short
