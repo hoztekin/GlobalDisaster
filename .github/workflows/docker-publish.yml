@@ -6,16 +6,15 @@ on:
 
 env:
   REGISTRY: ghcr.io
+
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-
     permissions:
       contents: read
       packages: write
-      id-token: write
 
     steps:
       - name: Checkout repository
@@ -26,6 +25,7 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
+          # GITHUB_TOKEN otomatik oluşur, ekstra secret eklemenize gerek yok
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract metadata (tags, labels) for Docker
@@ -33,6 +33,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          # Hem 'latest' hem de commit SHA ile etiketler
           tags: |
             type=raw,value=latest
             type=sha,format=short
