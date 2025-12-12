@@ -4,46 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d48e280a-81e6-4635-aae7-cb94ed86c606" name="Changes" comment="Updated Files">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/GlobalDisaster.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vscode/PythonImportHelper-v2-Completion.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/processed/disaster_data_final.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/raw/global_disaster.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/country_risk_clusters.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/disaster_momentum_analysis.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/model_01_features.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/risk_kmeans_model.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/severity_prediction_model.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/severity_prediction_scaler.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/trend_forecasting_model.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebooks/01_EDA_Analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/01_EDA_Analysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebooks/02_Strategic_Analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/02_Strategic_Analysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebooks/03_Model_01_SeverityPrediction.py" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/03_Model_01_SeverityPrediction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebooks/03_Model_02_RiskClustering.py" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/03_Model_02_RiskClustering.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/model_02_clustering/risk_cluster_map.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/model_02_clustering/risk_cluster_map.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/10_recovery_cost_timeline.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/strategic_analysis/10_recovery_cost_timeline.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/1_economic_loss_waterfall.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/1_waterfall_country_economic_loss.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/strategic_analysis/1_waterfall_country_economic_loss.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/2_aid_efficiency_radar.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/2_disaster_type_cost_comparison.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/strategic_analysis/2_disaster_type_cost_comparison.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/3_roi_analysis.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/3_temporal_economic_trend.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/strategic_analysis/3_temporal_economic_trend.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/4_aid_efficiency_radar.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/strategic_analysis/4_aid_efficiency_radar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/4_global_impact_map.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/5_geographic_impact_map.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/strategic_analysis/5_geographic_impact_map.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/6_roi_investment_analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/strategic_analysis/6_roi_investment_analysis.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/7_severity_economic_scatter.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/strategic_analysis/7_severity_economic_scatter.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/8_top_20_expensive_disasters.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/strategic_analysis/8_top_20_expensive_disasters.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/strategic_analysis/9_aid_gap_waterfall.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/strategic_analysis/9_aid_gap_waterfall.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/ultimate_eda/eda_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/reports/ultimate_eda/eda_summary.txt" afterDir="false" />
-    </list>
+    <list default="true" id="d48e280a-81e6-4635-aae7-cb94ed86c606" name="Changes" comment="Updated Files" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -180,19 +141,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="master" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
