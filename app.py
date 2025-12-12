@@ -597,7 +597,71 @@ if selected == "🎯 Dashboard":
                 height=750
             )
 
+# ===================================================================
+# PAGE: RISK MAP
+# ===================================================================
+elif selected == "🗺️ Risk Map":
+    st.markdown("## 🗺️ Global Risk Clustering & Regional Assessment")
+    st.markdown(
+        "<p style='color: #b0b4c8; margin-bottom: 2rem;'>Geographic clustering of disaster risk zones using ML algorithms.</p>",
+        unsafe_allow_html=True
+    )
 
+    show_html_report(
+        REPORTS_DIR / "model_02_clustering/risk_cluster_map.html",
+        height=850
+    )
+
+    with st.expander("📋 Risk Classification Legend", expanded=False):
+        col_legend1, col_legend2, col_legend3 = st.columns(3)
+
+        with col_legend1:
+            st.markdown(f"""
+            <div style="background: #0d3d56; padding: 1rem; border-radius: 8px; border-left: 4px solid #34c759;">
+                <h4 style="color: #34c759; margin-top: 0;">🟢 Low Risk</h4>
+                <p style="font-size: 0.9rem;">Minimal historical disaster frequency. Stable infrastructure.</p>
+            </div>
+            """, unsafe_allow_html=True)
+
+        with col_legend2:
+            st.markdown(f"""
+            <div style="background: #3d3c0f; padding: 1rem; border-radius: 8px; border-left: 4px solid #ff9500;">
+                <h4 style="color: #ff9500; margin-top: 0;">🟡 Moderate Risk</h4>
+                <p style="font-size: 0.9rem;">Occasional disasters. Developing response systems.</p>
+            </div>
+            """, unsafe_allow_html=True)
+
+        with col_legend3:
+            st.markdown(f"""
+            <div style="background: #3d0f0f; padding: 1rem; border-radius: 8px; border-left: 4px solid #ff3b30;">
+                <h4 style="color: #ff3b30; margin-top: 0;">🔴 High Risk</h4>
+                <p style="font-size: 0.9rem;">Frequent events. Critical intervention needed.</p>
+            </div>
+            """, unsafe_allow_html=True)
+
+    st.markdown("<div style='height: 2rem;'></div>", unsafe_allow_html=True)
+    st.markdown("---")
+    st.markdown("<div style='height: 1rem;'></div>", unsafe_allow_html=True)
+
+    # Additional Analysis Charts
+    tab_analysis1, tab_analysis2 = st.tabs([
+        "💰 Top 20 Most Expensive Disasters",
+        "📊 Severity vs Economic Loss"
+    ])
+
+    with tab_analysis1:
+        st.markdown("#### 🔥 Top 20 Most Expensive Disasters in Dataset")
+        show_html_report(
+            REPORTS_DIR / "strategic_analysis/8_top_20_expensive_disasters.html",
+            height=700
+        )
+
+    with tab_analysis2:
+        st.markdown("#### 📈 Relationship: Disaster Severity vs Economic Impact")
+        show_html_report(
+            REPORTS_DIR / "strategic_analysis/7_severity_economic_scatter.html",
+            height=700
+        )
 
 # ===================================================================
 # PAGE: TRENDS
