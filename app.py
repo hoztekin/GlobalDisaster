@@ -23,7 +23,8 @@ st.set_page_config(
     page_title="Global Disaster AI | Emergency Response Dashboard",
     page_icon="🚨",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="expanded",
+    menu_items=None
 )
 
 # ===================================================================
@@ -336,7 +337,7 @@ FALLBACK_METADATA = {
               "population_density": 464, "surface_area_km2": 3287263},
 }
 
-@st.cache_data
+@st.cache_data(show_spinner=False)
 def load_data():
     if not DATA_PATH.exists():
         return None, {}
@@ -359,16 +360,27 @@ def load_data():
 
 df, country_metadata = load_data()
 
-def show_html_report(file_path, height=600):
-    """Display HTML report - Clean pass-through"""
+@st.cache_data(show_spinner=False)
+def load_html_report(file_path):
+    """Cache HTML report loading"""
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
-            html_content = f.read()
-        components.html(html_content, height=height, scrolling=True)
+            return f.read(), None
     except FileNotFoundError:
-        st.info(f"📊 Grafik bekleniyor: `{file_path.name}`")
+        return None, "not_found"
     except Exception as e:
-        st.error(f"❌ Grafik yükleme hatası: {str(e)}")
+        return None, str(e)
+
+def show_html_report(file_path, height=600):
+    """Display HTML report - Clean pass-through"""
+    html_content, error = load_html_report(str(file_path))
+
+    if error == "not_found":
+        st.info(f"📊 Grafik bekleniyor: `{file_path.name}`")
+    elif error:
+        st.error(f"❌ Grafik yükleme hatası: {error}")
+    else:
+        components.html(html_content, height=height, scrolling=True)
 
 # ===================================================================
 # HEADER & SIDEBAR NAVIGATION
@@ -426,28 +438,62 @@ with st.sidebar:
 
         # Overall statistics (all data)
         st.markdown("#### 📈 Overall Statistics (2020-2024)")
-        col1, col2 = st.columns(2)
-        with col1:
-            st.metric("Total Disasters", f"{len(df):,}")
-            st.metric("Total Economic Loss", f"${df['economic_loss_usd'].sum()/1e9:.1f}B")
-        with col2:
-            st.metric("Countries Covered", f"{df['country'].nunique()}")
-            st.metric("Total Casualties", f"{df['casualties'].sum()/1e6:.1f}M")
+
+        total_disasters = len(df)
+        total_loss = df['economic_loss_usd'].sum()
+        total_countries = df['country'].nunique()
+        total_casualties = df['casualties'].sum()
+
+        st.markdown(f"""
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-size: 0.85rem;">
+            <div style="background: #151a37; padding: 0.75rem; border-radius: 6px; border-left: 3px solid #ff9500;">
+                <div style="color: #b0b4c8; font-size: 0.75rem;">Total Disasters</div>
+                <div style="color: #fff; font-weight: 600; font-size: 1rem;">{total_disasters:,}</div>
+            </div>
+            <div style="background: #151a37; padding: 0.75rem; border-radius: 6px; border-left: 3px solid #ff9500;">
+                <div style="color: #b0b4c8; font-size: 0.75rem;">Total Loss</div>
+                <div style="color: #fff; font-weight: 600; font-size: 1rem;">${total_loss/1e9:.1f}B</div>
+            </div>
+            <div style="background: #151a37; padding: 0.75rem; border-radius: 6px; border-left: 3px solid #ff9500;">
+                <div style="color: #b0b4c8; font-size: 0.75rem;">Countries</div>
+                <div style="color: #fff; font-weight: 600; font-size: 1rem;">{total_countries}</div>
+            </div>
+            <div style="background: #151a37; padding: 0.75rem; border-radius: 6px; border-left: 3px solid #ff9500;">
+                <div style="color: #b0b4c8; font-size: 0.75rem;">Casualties</div>
+                <div style="color: #fff; font-weight: 600; font-size: 1rem;">{total_casualties/1e6:.1f}M</div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
 
         # 2024 summary
         st.markdown("#### 📊 2024 Year Summary")
         df_2024 = df[df['year'] == 2024]
-        col3, col4 = st.columns(2)
-        with col3:
-            st.metric("2024 Events", f"{len(df_2024):,}")
-            st.metric(
-                "Critical Events",
-                f"{len(df_2024[df_2024['severity_index'] >= 8]):,}",
-                delta=f"Severity ≥ 8"
-            )
-        with col4:
-            st.metric("2024 Loss", f"${df_2024['economic_loss_usd'].sum()/1e9:.1f}B")
-            st.metric("Avg Response", f"{df_2024['response_time_hours'].mean():.1f}h")
+
+        events_2024 = len(df_2024)
+        critical_2024_count = len(df_2024[df_2024['severity_index'] >= 8])
+        loss_2024 = df_2024['economic_loss_usd'].sum()
+        avg_response_2024 = df_2024['response_time_hours'].mean()
+
+        st.markdown(f"""
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-size: 0.85rem;">
+            <div style="background: #151a37; padding: 0.75rem; border-radius: 6px; border-left: 3px solid #ff3b30;">
+                <div style="color: #b0b4c8; font-size: 0.75rem;">2024 Events</div>
+                <div style="color: #fff; font-weight: 600; font-size: 1rem;">{events_2024:,}</div>
+            </div>
+            <div style="background: #151a37; padding: 0.75rem; border-radius: 6px; border-left: 3px solid #ff3b30;">
+                <div style="color: #b0b4c8; font-size: 0.75rem;">Critical Events</div>
+                <div style="color: #fff; font-weight: 600; font-size: 1rem;">{critical_2024_count:,}</div>
+            </div>
+            <div style="background: #151a37; padding: 0.75rem; border-radius: 6px; border-left: 3px solid #ff3b30;">
+                <div style="color: #b0b4c8; font-size: 0.75rem;">2024 Loss</div>
+                <div style="color: #fff; font-weight: 600; font-size: 1rem;">${loss_2024/1e9:.1f}B</div>
+            </div>
+            <div style="background: #151a37; padding: 0.75rem; border-radius: 6px; border-left: 3px solid #ff3b30;">
+                <div style="color: #b0b4c8; font-size: 0.75rem;">Avg Response</div>
+                <div style="color: #fff; font-weight: 600; font-size: 1rem;">{avg_response_2024:.1f}h</div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
 
 # ===================================================================
 # PAGE: DASHBOARD
@@ -513,11 +559,13 @@ if selected == "🎯 Dashboard":
 
         st.markdown("<div style='height: 1.5rem;'></div>", unsafe_allow_html=True)
 
-        tab1, tab2, tab3, tab4 = st.tabs([
+        tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
             "💹 Economic Analysis",
             "⚙️ Operations",
             "💼 ROI & Investment",
-            "🌐 Geographic"
+            "🌐 Geographic",
+            "💰 Top 20 Expensive",
+            "📊 Severity vs Loss"
         ])
 
         with tab1:
@@ -597,6 +645,20 @@ if selected == "🎯 Dashboard":
                 height=750
             )
 
+        with tab5:
+            st.markdown("### 💰 Top 20 Most Expensive Disasters")
+            show_html_report(
+                REPORTS_DIR / "strategic_analysis/8_top_20_expensive_disasters.html",
+                height=700
+            )
+
+        with tab6:
+            st.markdown("### 📊 Severity vs Economic Loss")
+            show_html_report(
+                REPORTS_DIR / "strategic_analysis/7_severity_economic_scatter.html",
+                height=700
+            )
+
 # ===================================================================
 # PAGE: RISK MAP
 # ===================================================================
@@ -642,26 +704,6 @@ elif selected == "🗺️ Risk Map":
     st.markdown("<div style='height: 2rem;'></div>", unsafe_allow_html=True)
     st.markdown("---")
     st.markdown("<div style='height: 1rem;'></div>", unsafe_allow_html=True)
-
-    # Additional Analysis Charts
-    tab_analysis1, tab_analysis2 = st.tabs([
-        "💰 Top 20 Most Expensive Disasters",
-        "📊 Severity vs Economic Loss"
-    ])
-
-    with tab_analysis1:
-        st.markdown("#### 🔥 Top 20 Most Expensive Disasters in Dataset")
-        show_html_report(
-            REPORTS_DIR / "strategic_analysis/8_top_20_expensive_disasters.html",
-            height=700
-        )
-
-    with tab_analysis2:
-        st.markdown("#### 📈 Relationship: Disaster Severity vs Economic Impact")
-        show_html_report(
-            REPORTS_DIR / "strategic_analysis/7_severity_economic_scatter.html",
-            height=700
-        )
 
 # ===================================================================
 # PAGE: TRENDS
@@ -797,12 +839,56 @@ elif selected == "⚡ AI Simulator":
         pred = pred_raw
         rule_applied = False
 
-        if casualties >= 50 and pred < 2:
-            pred = 2
+        # ===== İMPROVED RISK LOGIC (Context-Aware) =====
+        income_group = meta.get('income_group', 'Upper middle income')
+
+        # Gelir seviyesine göre multiplier (düşük gelir = daha yüksek risk)
+        income_multiplier = {
+            'Low income': 1.5,
+            'Lower middle income': 1.3,
+            'Upper middle income': 1.0,
+            'High income': 0.7
+        }.get(income_group, 1.0)
+
+        # Normalize edilmiş etki metrikleri (0-1 arasında)
+        # Casualty impact (1 ölü = 0.01 risk point, max 100 can = 1 risk)
+        casualty_impact = min(casualties / 100, 1.0)
+
+        # Economic impact (ülkenin GDP'sine göre normalize)
+        # GDP tahmin: High income ~50T, Upper middle ~5T, Lower middle ~1T, Low ~100B
+        gdp_estimates = {
+            'High income': 50000000000,
+            'Upper middle income': 5000000000,
+            'Lower middle income': 1000000000,
+            'Low income': 100000000
+        }
+        country_gdp = gdp_estimates.get(income_group, 1000000000)
+        economic_impact = min(economic_loss / (country_gdp * 0.01), 1.0)  # 1% GDP = max risk
+
+        # Response time impact (24 saat = iyi, 72 saat = kötü)
+        response_impact = min(response_time / 72, 1.0)
+
+        # Composite risk score (0-1)
+        composite_risk = (casualty_impact * 0.4 + economic_impact * 0.4 + response_impact * 0.2) * income_multiplier
+
+        # Risk classification thresholds
+        if composite_risk < 0.2:
+            pred = 0  # LOW
+        elif composite_risk < 0.5:
+            pred = 1  # MEDIUM
+        elif composite_risk < 0.75:
+            pred = 2  # HIGH
+        else:
+            pred = 3  # CRITICAL
+
+        # Safety override: Çok yüksek can kaybı ve ekonomik kayıp
+        if casualties >= 1000 and economic_loss >= 10000000000:
+            pred = 3  # Her zaman CRITICAL
             rule_applied = True
-        if casualties >= 500 and pred < 3:
-            pred = 3
-            rule_applied = True
+        elif casualties >= 500 or economic_loss >= 5000000000:
+            if pred < 2:
+                pred = 2
+                rule_applied = True
 
         risk_labels = {0: "🟢 LOW", 1: "🟡 MEDIUM", 2: "🔴 HIGH", 3: "🔥 CRITICAL"}
         colors_map = {0: "#34c759", 1: "#ff9500", 2: "#ff3b30", 3: "#d70015"}
@@ -829,7 +915,7 @@ elif selected == "⚡ AI Simulator":
 
         if rule_applied:
             st.warning(
-                "⚠️ **Override Applied**: High casualty count triggered elevated risk classification per safety protocol."
+                "⚠️ **Safety Override Applied**: Extreme impact metrics triggered elevated risk classification."
             )
 
         st.markdown("### 💡 Recommended Actions")
