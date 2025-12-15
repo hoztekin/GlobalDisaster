@@ -27,9 +27,4 @@ HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health || exit 1
 
 # Default command
 # 'app.py' projenin kök dizininde olduğu için yol düzeltildi.
-CMD ["streamlit", "run", "app.py", \
-    "--server.port=8501", \
-    "--server.address=0.0.0.0", \
-    "--server.enableCORS=false", \
-    "--server.enableXsrfProtection=false", \
-    "--server.enableWebsocketCompression=false"]
+CMD ["streamlit", "run", "app.py"]

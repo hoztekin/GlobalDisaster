@@ -2,7 +2,7 @@
 
 **Miuul Data Scientist Bootcamp - Final Projesi** **Takım:** Resque Data
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://resqdata.haliloztekin.com)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://globaldisaster.haliloztekin.com)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -46,17 +46,17 @@ GlobalDisaster/
 │   └── disaster_momentum_analysis.csv           # Trend Analiz Çıktısı
 │
 ├── notebooks/                                   # Analiz ve Modelleme Scriptleri
-│   ├── 01_Ultimate_EDA.py                       # Veri Zenginleştirme (API) + EDA Pipeline
+│   ├── 01_EDA_Analysis.py                       # Veri Zenginleştirme (API) + EDA Pipeline
 │   ├── 02_Strategic_Analysis.py                 # Ekonomik Analiz ve HTML Rapor Üretimi
-│   ├── 05_Model_01_SeverityPrediction.py        # Şiddet Tahmin Modeli (Classification)
-│   ├── 06_Model_04_RiskClustering.py            # Coğrafi Risk Kümeleme (Clustering)
-│   └── 07_Model_05_TrendForecasting.py          # Trend ve Momentum Analizi (Time Series)
+│   ├── 03_Model_01_SeverityPrediction.py        # Şiddet Tahmin Modeli (Classification)
+│   ├── 03_Model_02_RiskClustering.py            # Coğrafi Risk Kümeleme (Clustering)
+│   └── 03_Model_03_TrendForecasting.py          # Trend ve Momentum Analizi (Time Series)
 │
 └── reports/                                     # Dashboard İçin Üretilen Dinamik Raporlar
     ├── strategic_analysis/                      # Waterfall, ROI, Radar Grafikleri
     ├── model_01/                                # Confusion Matrix vb.
-    ├── model_04_clustering/                     # Risk Haritası (Map)
-    └── model_05_trend/                          # Gelecek Tahmin Grafikleri
+    ├── model_02_clustering/                     # Risk Haritası (Map)
+    └── model_03_trend/                          # Gelecek Tahmin Grafikleri
 
 
 💡 Temel Özellikler

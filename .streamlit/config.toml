@@ -1,0 +1,95 @@
+[server]
+
+# Production server configuration for Cloudflare deployment
+
+headless = true
+
+runOnSave = false
+
+port = 8501
+
+address = "0.0.0.0"
+
+ 
+
+# CRITICAL: WebSocket configuration for Cloudflare
+
+enableCORS = false
+
+enableXsrfProtection = false
+
+enableWebsocketCompression = false
+
+ 
+
+# Cloudflare WebSocket timeout handling
+
+# Cloudflare has 100s timeout for WebSockets, so we set maxUploadSize
+
+maxUploadSize = 200
+
+maxMessageSize = 200
+
+ 
+
+# Base URL configuration (update if using custom domain)
+
+# baseUrlPath = ""
+
+ 
+
+[browser]
+
+# Disable browser features for production
+
+gatherUsageStats = false
+
+serverAddress = "0.0.0.0"
+
+serverPort = 8501
+
+ 
+
+[theme]
+
+# Optional: Ensure consistent theming
+
+primaryColor = "#ff3b30"
+
+backgroundColor = "#0a0e27"
+
+secondaryBackgroundColor = "#151a37"
+
+textColor = "#ffffff"
+
+ 
+
+[runner]
+
+# Fast rerun configuration
+
+fastReruns = true
+
+magicEnabled = false
+
+ 
+
+[client]
+
+# Cloudflare WebSocket keep-alive settings
+
+# These help maintain the WebSocket connection
+
+showErrorDetails = false
+
+toolbarMode = "minimal"
+
+ 
+
+[logger]
+
+# Production logging
+
+level = "error"
+
+messageFormat = "%(asctime)s - %(message)s"
