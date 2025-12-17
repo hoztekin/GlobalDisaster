@@ -1,963 +1,707 @@
-"""
-===================================================================
-🌍 GLOBAL DISASTER AI DASHBOARD - Professional Edition (v1.0)
-===================================================================
-"""
+# =============================================================================
+# Global Disaster AI Dashboard
+# =============================================================================
 
 import streamlit as st
 import streamlit.components.v1 as components
 from streamlit_option_menu import option_menu
 import pandas as pd
-import pickle
 import numpy as np
+import pickle
+import joblib
 from pathlib import Path
-from datetime import datetime, timedelta
+from datetime import datetime
 import warnings
 
 warnings.filterwarnings('ignore')
 
-# ===================================================================
-# PAGE CONFIG & ASSETS
-# ===================================================================
+# --- PAGE CONFIG ---
 st.set_page_config(
-    page_title="Global Disaster AI | Emergency Response Dashboard",
-    page_icon="🚨",
+    page_title="Global Disaster AI",
+    page_icon="🌍",
     layout="wide",
-    initial_sidebar_state="expanded",
-    menu_items=None
+    initial_sidebar_state="expanded"
 )
 
-# ===================================================================
-# DESIGN SYSTEM - PROFESSIONAL DARK THEME
-# ===================================================================
-DESIGN_TOKENS = {
-    "bg_dark": "#0a0e27",
-    "bg_dark_secondary": "#12152b",
-    "bg_card": "#151a37",
-    "accent_emergency": "#ff3b30",
-    "accent_warning": "#ff9500",
-    "accent_success": "#34c759",
-    "accent_critical": "#d70015",
-    "text_primary": "#ffffff",
-    "text_secondary": "#b0b4c8",
-    "border_color": "#2a2f4b",
-}
-
-CUSTOM_CSS = f"""
+# --- CUSTOM CSS ---
+st.markdown("""
 <style>
-    :root {{
-        --bg-dark: {DESIGN_TOKENS['bg_dark']};
-        --bg-secondary: {DESIGN_TOKENS['bg_dark_secondary']};
-        --bg-card: {DESIGN_TOKENS['bg_card']};
-        --accent-emergency: {DESIGN_TOKENS['accent_emergency']};
-        --accent-warning: {DESIGN_TOKENS['accent_warning']};
-        --accent-success: {DESIGN_TOKENS['accent_success']};
-        --text-primary: {DESIGN_TOKENS['text_primary']};
-        --text-secondary: {DESIGN_TOKENS['text_secondary']};
-    }}
-
-    html, body, [data-testid="stAppViewContainer"] {{
-        background: linear-gradient(135deg, {DESIGN_TOKENS['bg_dark']} 0%, {DESIGN_TOKENS['bg_dark_secondary']} 100%);
-        color: {DESIGN_TOKENS['text_primary']};
-        font-family: 'Segoe UI', 'Inter', sans-serif;
-        overflow-x: hidden;
-    }}
-
-    [data-testid="stSidebar"] {{
-        background: {DESIGN_TOKENS['bg_dark_secondary']};
-        border-right: 1px solid {DESIGN_TOKENS['border_color']};
-    }}
-
-    h1 {{
-        font-size: 2.5rem;
-        font-weight: 800;
-        letter-spacing: -0.02em;
-        margin-bottom: 0.5rem;
-        background: linear-gradient(135deg, #ffffff 0%, #b0b4c8 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }}
-
-    h2 {{
-        font-size: 1.8rem;
-        font-weight: 700;
-        letter-spacing: -0.01em;
-        margin-top: 1.5rem;
-        margin-bottom: 0.75rem;
-        color: {DESIGN_TOKENS['text_primary']};
-    }}
-
-    h3 {{
-        font-size: 1.3rem;
-        font-weight: 600;
-        color: {DESIGN_TOKENS['text_primary']};
-        letter-spacing: -0.005em;
-    }}
-
-    p, div {{
-        font-size: 1rem;
-        line-height: 1.6;
-        color: {DESIGN_TOKENS['text_secondary']};
-    }}
-
-    [data-testid="metric-container"] {{
-        background: {DESIGN_TOKENS['bg_card']};
-        border: 1.5px solid {DESIGN_TOKENS['border_color']};
-        border-radius: 12px;
-        padding: 1.5rem !important;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        overflow: hidden;
-    }}
-
-    [data-testid="metric-container"]::before {{
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 4px;
-        height: 100%;
-        background: linear-gradient(180deg, {DESIGN_TOKENS['accent_emergency']} 0%, {DESIGN_TOKENS['accent_warning']} 100%);
-        border-radius: 12px 0 0 12px;
-    }}
-
-    [data-testid="metric-container"]:hover {{
-        border-color: {DESIGN_TOKENS['accent_emergency']};
-        box-shadow: 0 0 20px rgba(255, 59, 48, 0.2);
-        transform: translateY(-2px);
-    }}
-
-    [data-testid="metric-label"] {{
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: {DESIGN_TOKENS['text_secondary']};
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        margin-bottom: 0.5rem;
-    }}
-
-    [data-testid="metric-value"] {{
-        font-size: 2rem;
-        font-weight: 800;
-        color: {DESIGN_TOKENS['text_primary']};
-        letter-spacing: -0.02em;
-    }}
-
-    [role="tablist"] {{
-        background: transparent;
-        border-bottom: 2px solid {DESIGN_TOKENS['border_color']};
-        gap: 1rem;
-        padding: 0;
-    }}
-
-    [role="tab"] {{
-        background: transparent;
-        color: {DESIGN_TOKENS['text_secondary']};
-        border: none;
-        border-bottom: 2px solid transparent;
-        padding: 1rem 1.5rem;
-        font-weight: 600;
-        font-size: 1rem;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        letter-spacing: 0.01em;
-    }}
-
-    [role="tab"]:hover {{
-        color: {DESIGN_TOKENS['accent_emergency']};
-        border-bottom-color: {DESIGN_TOKENS['accent_emergency']};
-    }}
-
-    [role="tab"][aria-selected="true"] {{
-        color: {DESIGN_TOKENS['accent_emergency']};
-        border-bottom-color: {DESIGN_TOKENS['accent_emergency']};
-    }}
-
-    .stButton > button {{
-        background: linear-gradient(135deg, {DESIGN_TOKENS['accent_emergency']} 0%, {DESIGN_TOKENS['accent_critical']} 100%);
+    .stMetric {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 15px;
+        border-radius: 10px;
         color: white;
-        border: none;
+    }
+    .stMetric label {
+        color: rgba(255,255,255,0.8) !important;
+    }
+    .stMetric [data-testid="stMetricValue"] {
+        color: white !important;
+        font-weight: bold;
+    }
+    .risk-critical { background-color: #e74c3c; color: white; padding: 20px; border-radius: 10px; text-align: center; }
+    .risk-high { background-color: #e67e22; color: white; padding: 20px; border-radius: 10px; text-align: center; }
+    .risk-medium { background-color: #f1c40f; color: #333; padding: 20px; border-radius: 10px; text-align: center; }
+    .risk-low { background-color: #2ecc71; color: white; padding: 20px; border-radius: 10px; text-align: center; }
+    .insight-box { 
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        border-left: 4px solid #e94560;
+        padding: 20px;
         border-radius: 8px;
-        padding: 0.75rem 1.5rem;
-        font-weight: 700;
-        font-size: 1rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 4px 15px rgba(255, 59, 48, 0.3);
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-    }}
-
-    .stButton > button:hover {{
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(255, 59, 48, 0.4);
-    }}
-
-    input, select, textarea {{
-        background: {DESIGN_TOKENS['bg_card']} !important;
-        border: 1.5px solid {DESIGN_TOKENS['border_color']} !important;
-        color: {DESIGN_TOKENS['text_primary']} !important;
-        border-radius: 8px !important;
-        padding: 0.75rem !important;
-        font-size: 1rem !important;
-        transition: all 0.3s ease;
-    }}
-
-    input:focus, select:focus, textarea:focus {{
-        border-color: {DESIGN_TOKENS['accent_emergency']} !important;
-        box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.1) !important;
-    }}
-
-    [data-testid="stExpander"] {{
-        background: {DESIGN_TOKENS['bg_card']};
-        border: 1.5px solid {DESIGN_TOKENS['border_color']};
-        border-radius: 12px;
-    }}
-
-    [data-testid="stExpander"]:hover {{
-        border-color: {DESIGN_TOKENS['accent_warning']};
-    }}
-
-    .stAlert {{
-        border-radius: 12px;
-        border-left: 4px solid;
-        padding: 1rem;
-        margin-bottom: 1rem;
-    }}
-
-    ::-webkit-scrollbar {{
-        width: 8px;
-        height: 8px;
-    }}
-
-    ::-webkit-scrollbar-track {{
-        background: {DESIGN_TOKENS['bg_card']};
-    }}
-
-    ::-webkit-scrollbar-thumb {{
-        background: {DESIGN_TOKENS['accent_emergency']};
-        border-radius: 4px;
-    }}
-
-    ::-webkit-scrollbar-thumb:hover {{
-        background: {DESIGN_TOKENS['accent_warning']};
-    }}
-
-    .stIframe {{
-        width: 100%;
-    }}
-
-    @media (max-width: 768px) {{
-        h1 {{
-            font-size: 1.8rem;
-        }}
-
-        h2 {{
-            font-size: 1.3rem;
-        }}
-
-        [data-testid="metric-container"] {{
-            padding: 1rem !important;
-        }}
-
-        [data-testid="metric-value"] {{
-            font-size: 1.5rem;
-        }}
-
-        .stButton > button {{
-            width: 100%;
-            padding: 0.9rem 1rem;
-            font-size: 0.9rem;
-        }}
-
-        [role="tablist"] {{
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }}
-
-        [role="tab"] {{
-            padding: 0.75rem 1rem;
-            font-size: 0.9rem;
-        }}
-    }}
-
-    @keyframes slideInUp {{
-        from {{
-            opacity: 0;
-            transform: translateY(20px);
-        }}
-        to {{
-            opacity: 1;
-            transform: translateY(0);
-        }}
-    }}
-
-    [data-testid="stMetricContainer"] {{
-        animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }}
-
-    @keyframes emergencyPulse {{
-        0%, 100% {{
-            box-shadow: 0 0 10px rgba(255, 59, 48, 0.3);
-        }}
-        50% {{
-            box-shadow: 0 0 20px rgba(255, 59, 48, 0.6);
-        }}
-    }}
-
-    .critical-alert {{
-        animation: emergencyPulse 2s infinite;
-    }}
+        margin-top: 20px;
+    }
 </style>
-"""
+""", unsafe_allow_html=True)
 
-st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
+# --- PATH CONFIGURATION ---
+try:
+    PROJECT_ROOT = Path(__file__).resolve().parent
+except NameError:
+    PROJECT_ROOT = Path(r"D:\Miuul Final Project\GlobalDisaster")
 
-# ===================================================================
-# PATHS & DATA LOADING
-# ===================================================================
-PROJECT_ROOT = Path(__file__).parent
-DATA_PATH = PROJECT_ROOT / "data/processed/disaster_data_final.csv"
-MODELS_DIR = PROJECT_ROOT / "models"
-REPORTS_DIR = PROJECT_ROOT / "reports"
+REPORTS = PROJECT_ROOT / "reports"
+MODELS = PROJECT_ROOT / "models"
+DATA = PROJECT_ROOT / "data" / "processed"
 
-FALLBACK_METADATA = {
-    "Turkey": {"region": "Europe & Central Asia", "income_group": "Upper middle income", "population": 85000000,
-               "population_density": 110, "surface_area_km2": 783562},
-    "USA": {"region": "North America", "income_group": "High income", "population": 331000000, "population_density": 36,
-            "surface_area_km2": 9833520},
-    "Japan": {"region": "East Asia & Pacific", "income_group": "High income", "population": 125000000,
-              "population_density": 338, "surface_area_km2": 377975},
-    "China": {"region": "East Asia & Pacific", "income_group": "Upper middle income", "population": 1400000000,
-              "population_density": 148, "surface_area_km2": 9596960},
-    "India": {"region": "South Asia", "income_group": "Lower middle income", "population": 1380000000,
-              "population_density": 464, "surface_area_km2": 3287263},
+DIRS = {
+    "strategic": REPORTS / "strategic_analysis",
+    "model_01": REPORTS / "model_01",
+    "model_02": REPORTS / "model_02_clustering",
+    "model_03": REPORTS / "model_03_trend",
+    "model_04": REPORTS / "model_04",
+    "model_05": REPORTS / "model_05"
 }
 
-@st.cache_data(show_spinner=False)
+
+# --- DATA LOADING ---
+@st.cache_data
 def load_data():
-    if not DATA_PATH.exists():
-        return None, {}
-    df = pd.read_csv(DATA_PATH)
+    path = DATA / "disaster_data_final.csv"
+    if not path.exists():
+        return None
+    df = pd.read_csv(path)
     df['date'] = pd.to_datetime(df['date'])
-    country_meta = df.sort_values('year', ascending=False).groupby('country').first()
-    cols = ['region', 'income_group', 'population', 'population_density', 'surface_area_km2']
+    return df
 
-    for c in cols:
-        if c not in country_meta.columns:
-            country_meta[c] = np.nan
 
-    meta_dict = country_meta[cols].to_dict('index')
+@st.cache_resource
+def load_models():
+    """Tüm modelleri yükle"""
+    models = {}
 
-    for ctry, data in FALLBACK_METADATA.items():
-        if ctry not in meta_dict or pd.isna(meta_dict[ctry].get('region')):
-            meta_dict[ctry] = data
-
-    return df, meta_dict
-
-df, country_metadata = load_data()
-
-@st.cache_data(show_spinner=False)
-def load_html_report(file_path):
-    """Cache HTML report loading"""
+    # Model 01: Severity Prediction
     try:
-        with open(file_path, 'r', encoding='utf-8') as f:
-            return f.read(), None
-    except FileNotFoundError:
-        return None, "not_found"
+        models['severity_model'] = pickle.load(open(MODELS / 'severity_prediction_model.pkl', 'rb'))
+        models['severity_scaler'] = pickle.load(open(MODELS / 'severity_prediction_scaler.pkl', 'rb'))
+        models['severity_features'] = pickle.load(open(MODELS / 'model_01_features.pkl', 'rb'))
+    except Exception as e:
+        pass
+
+    # Model 02: Risk Clustering (K-Means)
+    try:
+        models['risk_kmeans'] = pickle.load(open(MODELS / 'risk_kmeans_model.pkl', 'rb'))
+        models['country_risk'] = pd.read_csv(MODELS / 'country_risk_clusters.csv')
+    except:
+        pass
+
+    # Model 03: Trend Forecasting
+    try:
+        models['trend_model'] = pickle.load(open(MODELS / 'trend_forecasting_model.pkl', 'rb'))
+        models['momentum_data'] = pd.read_csv(MODELS / 'disaster_momentum_analysis.csv')
+    except:
+        pass
+
+    # Model 04: Country Clustering
+    try:
+        models['country_kmeans'] = joblib.load(MODELS / 'kmeans_country_model.pkl')
+        models['country_scaler'] = joblib.load(MODELS / 'kmeans_country_scaler.pkl')
+    except:
+        pass
+
+    # Model 05: Grid Analysis
+    try:
+        models['grid_kmeans'] = joblib.load(MODELS / 'kmeans_grid_model.pkl')
+        models['grid_data'] = pd.read_csv(DIRS['model_05'] / 'grid_risk_map_data.csv')
+    except:
+        pass
+
+    return models
+
+
+df = load_data()
+models = load_models()
+
+
+# --- HELPER FUNCTIONS ---
+def show_html(folder, filename, height=650):
+    """HTML dosyasını göster"""
+    path = DIRS.get(folder, REPORTS) / filename
+    if path.exists():
+        with open(path, 'r', encoding='utf-8') as f:
+            components.html(f.read(), height=height, scrolling=True)
+    else:
+        st.warning(f"📁 Dosya bulunamadı: {filename}")
+
+
+def predict_severity(input_data, models):
+    """Model 01 ile risk tahmini yap"""
+    if 'severity_model' not in models:
+        return None, "Model yüklenmedi"
+
+    try:
+        features = models['severity_features']
+        X = pd.DataFrame([input_data])
+
+        for col in features:
+            if col not in X.columns:
+                X[col] = 0
+
+        X = X[features]
+        X_scaled = models['severity_scaler'].transform(X)
+        prediction = models['severity_model'].predict(X_scaled)[0]
+
+        severity_map = {0: "LOW", 1: "MEDIUM", 2: "HIGH", 3: "CRITICAL"}
+        return prediction, severity_map.get(prediction, "UNKNOWN")
     except Exception as e:
         return None, str(e)
 
-def show_html_report(file_path, height=600):
-    """Display HTML report - Clean pass-through"""
-    html_content, error = load_html_report(str(file_path))
 
-    if error == "not_found":
-        st.info(f"📊 Grafik bekleniyor: `{file_path.name}`")
-    elif error:
-        st.error(f"❌ Grafik yükleme hatası: {error}")
-    else:
-        components.html(html_content, height=height, scrolling=True)
+def get_country_risk(country, models):
+    """Ülkenin risk seviyesini getir"""
+    if 'country_risk' not in models:
+        return None
 
-# ===================================================================
-# HEADER & SIDEBAR NAVIGATION
-# ===================================================================
+    risk_df = models['country_risk']
+    country_data = risk_df[risk_df['country'] == country]
+
+    if not country_data.empty:
+        return country_data.iloc[0].to_dict()
+    return None
+
+
+# --- SIDEBAR ---
 with st.sidebar:
-    # Logo
-    st.markdown("""
-    <div style="text-align: center; margin-bottom: 2rem;">
-        <h2 style="margin: 0; font-size: 2rem;">🚨</h2>
-        <h3 style="margin-top: 0.5rem; font-size: 1.2rem; letter-spacing: 0.1em;">
-            RESCUE<br><span style="font-weight: 300; font-size: 0.9rem;">DATA SCIENCE</span>
-        </h3>
-    </div>
-    <hr style="border-color: #2a2f4b; margin-bottom: 2rem;">
-    """, unsafe_allow_html=True)
+    st.title("🚨 Resque Data")
 
     selected = option_menu(
-        menu_title="📋 NAVIGATION",
-        options=["🎯 Dashboard", "🗺️ Risk Map", "📈 Trends", "⚡ AI Simulator"],
-        icons=["bar-chart-fill", "map-fill", "graph-up-arrow", "cpu-fill"],
-        menu_icon="cast",
+        menu_title=None,
+        options=["Kontrol Paneli", "Risk Haritası", "Stratejik Analiz", "AI Simülatör", "Trendler", "Hakkında"],
+        icons=["speedometer2", "globe", "graph-up", "cpu", "activity", "info-circle"],
         default_index=0,
         styles={
-            "container": {
-                "padding": "0.5rem",
-                "background-color": "transparent",
-                "border": "1px solid #2a2f4b",
-                "border-radius": "10px",
-            },
-            "icon": {
-                "color": "#ff3b30",
-                "font-size": "1.3rem",
-            },
-            "nav-link": {
-                "color": "#b0b4c8",
-                "font-weight": "600",
-                "border-radius": "8px",
-                "padding": "0.75rem 1rem",
-                "margin-bottom": "0.5rem",
-                "transition": "all 0.3s ease",
-            },
-            "nav-link-selected": {
-                "background-color": "#ff3b30",
-                "color": "#ffffff",
-                "border-radius": "8px",
-            },
+            "container": {"padding": "5px"},
+            "icon": {"color": "#FF6B35", "font-size": "18px"},
+            "nav-link": {"font-size": "14px", "text-align": "left", "margin": "2px"},
+            "nav-link-selected": {"background-color": "#004E89"},
         }
     )
 
-    st.markdown("<hr style='border-color: #2a2f4b; margin: 2rem 0;'>", unsafe_allow_html=True)
+    st.markdown("---")
+    st.caption(f"📅 {datetime.now().strftime('%d %B %Y')}")
 
-    # Dataset Overview - Realistic statistics
-    if df is not None:
-        st.markdown("### 📊 Dataset Overview")
+    # Model durumu
+    st.markdown("### 🤖 Model Durumu")
+    model_status = {
+        "Severity (XGBoost)": "severity_model" in models,
+        "Risk Clustering": "risk_kmeans" in models,
+        "Trend Forecast": "trend_model" in models,
+        "Country Cluster": "country_kmeans" in models,
+        "Grid Analysis": "grid_kmeans" in models
+    }
+    for name, status in model_status.items():
+        icon = "✅" if status else "❌"
+        st.caption(f"{icon} {name}")
 
-        # Overall statistics (all data)
-        st.markdown("#### 📈 Overall Statistics (2020-2024)")
-
-        total_disasters = len(df)
-        total_loss = df['economic_loss_usd'].sum()
-        total_countries = df['country'].nunique()
-        total_casualties = df['casualties'].sum()
-
-        st.markdown(f"""
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-size: 0.85rem;">
-            <div style="background: #151a37; padding: 0.75rem; border-radius: 6px; border-left: 3px solid #ff9500;">
-                <div style="color: #b0b4c8; font-size: 0.75rem;">Total Disasters</div>
-                <div style="color: #fff; font-weight: 600; font-size: 1rem;">{total_disasters:,}</div>
-            </div>
-            <div style="background: #151a37; padding: 0.75rem; border-radius: 6px; border-left: 3px solid #ff9500;">
-                <div style="color: #b0b4c8; font-size: 0.75rem;">Total Loss</div>
-                <div style="color: #fff; font-weight: 600; font-size: 1rem;">${total_loss/1e9:.1f}B</div>
-            </div>
-            <div style="background: #151a37; padding: 0.75rem; border-radius: 6px; border-left: 3px solid #ff9500;">
-                <div style="color: #b0b4c8; font-size: 0.75rem;">Countries</div>
-                <div style="color: #fff; font-weight: 600; font-size: 1rem;">{total_countries}</div>
-            </div>
-            <div style="background: #151a37; padding: 0.75rem; border-radius: 6px; border-left: 3px solid #ff9500;">
-                <div style="color: #b0b4c8; font-size: 0.75rem;">Casualties</div>
-                <div style="color: #fff; font-weight: 600; font-size: 1rem;">{total_casualties/1e6:.1f}M</div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-
-        # 2024 summary
-        st.markdown("#### 📊 2024 Year Summary")
-        df_2024 = df[df['year'] == 2024]
-
-        events_2024 = len(df_2024)
-        critical_2024_count = len(df_2024[df_2024['severity_index'] >= 8])
-        loss_2024 = df_2024['economic_loss_usd'].sum()
-        avg_response_2024 = df_2024['response_time_hours'].mean()
-
-        st.markdown(f"""
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-size: 0.85rem;">
-            <div style="background: #151a37; padding: 0.75rem; border-radius: 6px; border-left: 3px solid #ff3b30;">
-                <div style="color: #b0b4c8; font-size: 0.75rem;">2024 Events</div>
-                <div style="color: #fff; font-weight: 600; font-size: 1rem;">{events_2024:,}</div>
-            </div>
-            <div style="background: #151a37; padding: 0.75rem; border-radius: 6px; border-left: 3px solid #ff3b30;">
-                <div style="color: #b0b4c8; font-size: 0.75rem;">Critical Events</div>
-                <div style="color: #fff; font-weight: 600; font-size: 1rem;">{critical_2024_count:,}</div>
-            </div>
-            <div style="background: #151a37; padding: 0.75rem; border-radius: 6px; border-left: 3px solid #ff3b30;">
-                <div style="color: #b0b4c8; font-size: 0.75rem;">2024 Loss</div>
-                <div style="color: #fff; font-weight: 600; font-size: 1rem;">${loss_2024/1e9:.1f}B</div>
-            </div>
-            <div style="background: #151a37; padding: 0.75rem; border-radius: 6px; border-left: 3px solid #ff3b30;">
-                <div style="color: #b0b4c8; font-size: 0.75rem;">Avg Response</div>
-                <div style="color: #fff; font-weight: 600; font-size: 1rem;">{avg_response_2024:.1f}h</div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-
-# ===================================================================
-# PAGE: DASHBOARD
-# ===================================================================
-if selected == "🎯 Dashboard":
-    # ALERT SYSTEM - Based on 2024 data
-    if df is not None:
-        # Highest risk countries in 2024
-        df_2024 = df[df['year'] == 2024]
-        critical_2024 = df_2024[df_2024['severity_index'] >= 8]
-
-        if len(critical_2024) > 0:
-            top_country = critical_2024['country'].value_counts().index[0]
-            top_loss = critical_2024[critical_2024['country'] == top_country]['economic_loss_usd'].sum()
-            top_events = len(critical_2024[critical_2024['country'] == top_country])
-
-            st.warning(
-                f"🚨 **HIGH-RISK ALERT**: {len(critical_2024)} critical events in 2024. "
-                f"Highest risk: **{top_country}** ({top_events} events, Loss: ${top_loss/1e9:.2f}B)",
-                icon="⚠️"
-            )
-
-    st.markdown("## 📊 Executive Summary & Global Metrics")
-    st.markdown(
-        "<p style='color: #b0b4c8; margin-bottom: 2rem;'>Real-time intelligence on global disasters, economic impact, and response effectiveness.</p>",
-        unsafe_allow_html=True
-    )
+# =============================================================================
+# SAYFA: KONTROL PANELİ
+# =============================================================================
+if selected == "Kontrol Paneli":
+    st.title("🎯 Yönetici Özeti")
+    st.markdown("*Küresel afet verilerinin kapsamlı analizi*")
 
     if df is not None:
-        kpi_col1, kpi_col2, kpi_col3, kpi_col4 = st.columns(4)
+        # Ana Metrikler
+        col1, col2, col3, col4, col5 = st.columns(5)
 
-        total_loss = df['economic_loss_usd'].sum()
-        total_casualties = df['casualties'].sum()
-        avg_response_time = df['response_time_hours'].mean()
-        critical_events = len(df[df['severity_index'] >= 8])
+        with col1:
+            total_loss = df['economic_loss_usd'].sum()
+            st.metric("💰 Toplam Kayıp", f"${total_loss / 1e9:.1f}B")
 
-        with kpi_col1:
-            st.metric(
-                "💰 Total Economic Loss",
-                f"${total_loss/1e9:.1f}B",
-                delta="↑ 8.2% YoY",
-                delta_color="inverse"
-            )
-        with kpi_col2:
-            st.metric(
-                "👥 Total Casualties",
-                f"{total_casualties/1e6:.1f}M",
-                delta="↑ 12.5%",
-                delta_color="inverse"
-            )
-        with kpi_col3:
-            st.metric(
-                "⏱️ Avg Response Time",
-                f"{avg_response_time:.1f}h",
-                delta="↓ 2.3h improvement"
-            )
-        with kpi_col4:
-            st.metric(
-                "🚨 Critical Events",
-                f"{critical_events}",
-                delta="High Alert"
-            )
+        with col2:
+            total_casualties = df['casualties'].sum()
+            st.metric("💀 Can Kaybı", f"{total_casualties / 1e6:.2f}M")
 
-        st.markdown("<div style='height: 1.5rem;'></div>", unsafe_allow_html=True)
+        with col3:
+            st.metric("📊 Toplam Olay", f"{len(df):,}")
 
-        tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
-            "💹 Economic Analysis",
-            "⚙️ Operations",
-            "💼 ROI & Investment",
-            "🌐 Geographic",
-            "💰 Top 20 Expensive",
-            "📊 Severity vs Loss"
-        ])
+        with col4:
+            avg_response = df['response_time_hours'].mean()
+            st.metric("⏱️ Ort. Müdahale", f"{avg_response:.1f} saat")
+
+        with col5:
+            avg_severity = df['severity_index'].mean()
+            st.metric("⚡ Ort. Şiddet", f"{avg_severity:.2f}")
+
+        st.markdown("---")
+
+        # Tab'lar
+        tab1, tab2, tab3 = st.tabs(["💰 EKONOMİK ANALİZ", "🌍 COĞRAFİ GÖRÜNÜM", "⚙️ OPERASYONEL"])
 
         with tab1:
-            st.markdown("### Economic Impact Breakdown")
+            st.subheader("📊 Ülkelere Göre Ekonomik Kayıp")
+            show_html("strategic", "1_waterfall_country_economic_loss.html", 550)
 
-            st.markdown("#### 🏆 Top Countries by Economic Loss")
-            show_html_report(
-                REPORTS_DIR / "strategic_analysis/1_waterfall_country_economic_loss.html",
-                height=600
-            )
-
-            st.markdown("<div style='height: 1.5rem;'></div>", unsafe_allow_html=True)
-
-            st.markdown("#### 🌪️ Disaster Type Cost Analysis")
-            show_html_report(
-                REPORTS_DIR / "strategic_analysis/2_disaster_type_cost_comparison.html",
-                height=600
-            )
-
-            st.markdown("<div style='height: 2rem;'></div>", unsafe_allow_html=True)
             st.markdown("---")
-            st.markdown("<div style='height: 1rem;'></div>", unsafe_allow_html=True)
 
-            # Additional Analysis Charts
-            tab_analysis1, tab_analysis2 = st.tabs([
-                "💰 Top 20 Most Expensive Disasters",
-                "📊 Severity vs Economic Loss"
-            ])
+            st.subheader("🌪️ Afet Tipi ve Maliyet Dağılımı")
+            show_html("strategic", "2_disaster_type_cost_comparison.html", 600)
 
-            with tab_analysis1:
-                st.markdown("#### 🔥 Top 20 Most Expensive Disasters in Dataset")
-                show_html_report(
-                    REPORTS_DIR / "strategic_analysis/8_top_20_expensive_disasters.html",
-                    height=700
-                )
+            st.markdown("---")
 
-            with tab_analysis2:
-                st.markdown("#### 📈 Relationship: Disaster Severity vs Economic Impact")
-                show_html_report(
-                    REPORTS_DIR / "strategic_analysis/7_severity_economic_scatter.html",
-                    height=700
-                )
+            col_a, col_b = st.columns(2)
+            with col_a:
+                st.subheader("📈 Şiddet vs Kayıp İlişkisi")
+                show_html("strategic", "7_severity_economic_scatter.html", 500)
+
+            with col_b:
+                st.subheader("🏆 En Pahalı 20 Afet")
+                show_html("strategic", "8_top_20_expensive_disasters.html", 500)
 
         with tab2:
-            st.markdown("### Operational Efficiency")
+            st.subheader("🗺️ Küresel Etki Haritası")
+            show_html("strategic", "5_geographic_impact_map.html", 700)
 
-            st.markdown("#### 💔 Aid Gap Analysis")
-            show_html_report(
-                REPORTS_DIR / "strategic_analysis/9_aid_gap_waterfall.html",
-                height=600
-            )
+            st.markdown("---")
+            st.subheader("📋 Ülke Bazlı Özet")
 
-            st.markdown("<div style='height: 1.5rem;'></div>", unsafe_allow_html=True)
+            country_summary = df.groupby('country').agg({
+                'economic_loss_usd': 'sum',
+                'casualties': 'sum',
+                'severity_index': 'mean',
+                'disaster_type': 'count'
+            }).reset_index()
+            country_summary.columns = ['Ülke', 'Toplam Kayıp ($)', 'Can Kaybı', 'Ort. Şiddet', 'Olay Sayısı']
+            country_summary = country_summary.sort_values('Toplam Kayıp ($)', ascending=False).head(15)
+            country_summary['Toplam Kayıp ($)'] = country_summary['Toplam Kayıp ($)'].apply(
+                lambda x: f"${x / 1e6:,.0f}M")
 
-            st.markdown("#### 📊 Aid Efficiency by Type")
-            show_html_report(
-                REPORTS_DIR / "strategic_analysis/4_aid_efficiency_radar.html",
-                height=600
-            )
+            st.dataframe(country_summary, use_container_width=True, hide_index=True)
 
         with tab3:
-            st.markdown("### Return on Investment Analysis")
-            show_html_report(
-                REPORTS_DIR / "strategic_analysis/6_roi_investment_analysis.html",
-                height=650
-            )
+            st.subheader("🎯 Yardım Etkinliği & Açığı")
 
-            st.info(
-                "💡 **Insight**: Infrastructure resilience shows highest ROI (7x) compared to "
-                "early warning systems (4x) and aid budget increases (3x)."
-            )
+            # --- DÜZELTME: Grafikler alt alta ---
+            st.markdown("**Yardım Karşılama Oranı**")
+            show_html("strategic", "4_aid_efficiency_radar.html", 550)
 
-        with tab4:
-            st.markdown("### Global Impact Map")
-            show_html_report(
-                REPORTS_DIR / "strategic_analysis/5_geographic_impact_map.html",
-                height=750
-            )
+            st.markdown("---")
 
-        with tab5:
-            st.markdown("### 💰 Top 20 Most Expensive Disasters")
-            show_html_report(
-                REPORTS_DIR / "strategic_analysis/8_top_20_expensive_disasters.html",
-                height=700
-            )
+            st.markdown("**Yardım Açığı Analizi**")
+            show_html("strategic", "9_aid_gap_waterfall.html", 550)
 
-        with tab6:
-            st.markdown("### 📊 Severity vs Economic Loss")
-            show_html_report(
-                REPORTS_DIR / "strategic_analysis/7_severity_economic_scatter.html",
-                height=700
-            )
+            st.markdown("---")
+            st.subheader("💡 Operasyonel İçgörüler")
 
-# ===================================================================
-# PAGE: RISK MAP
-# ===================================================================
-elif selected == "🗺️ Risk Map":
-    st.markdown("## 🗺️ Global Risk Clustering & Regional Assessment")
-    st.markdown(
-        "<p style='color: #b0b4c8; margin-bottom: 2rem;'>Geographic clustering of disaster risk zones using ML algorithms.</p>",
-        unsafe_allow_html=True
-    )
+            if df is not None:
+                total_loss = df['economic_loss_usd'].sum()
+                total_aid = df['aid_amount_usd'].sum()
+                aid_coverage = (total_aid / total_loss) * 100 if total_loss > 0 else 0
 
-    show_html_report(
-        REPORTS_DIR / "model_02_clustering/risk_cluster_map.html",
-        height=850
-    )
+                # En çok yardım açığı olan afet tipi
+                aid_gap = df.groupby('disaster_type').agg({
+                    'economic_loss_usd': 'sum',
+                    'aid_amount_usd': 'sum'
+                })
+                aid_gap['gap'] = aid_gap['economic_loss_usd'] - aid_gap['aid_amount_usd']
+                worst_type = aid_gap['gap'].idxmax()
+                worst_gap = aid_gap.loc[worst_type, 'gap']
 
-    with st.expander("📋 Risk Classification Legend", expanded=False):
-        col_legend1, col_legend2, col_legend3 = st.columns(3)
+                col_i1, col_i2 = st.columns(2)
 
-        with col_legend1:
-            st.markdown(f"""
-            <div style="background: #0d3d56; padding: 1rem; border-radius: 8px; border-left: 4px solid #34c759;">
-                <h4 style="color: #34c759; margin-top: 0;">🟢 Low Risk</h4>
-                <p style="font-size: 0.9rem;">Minimal historical disaster frequency. Stable infrastructure.</p>
-            </div>
-            """, unsafe_allow_html=True)
+                with col_i1:
+                    st.markdown(f"""
+                    <div class="insight-box">
+                        <h4>📊 Yardım Karşılama Oranı</h4>
+                        <p>Küresel afetlerde toplam ekonomik kaybın <strong>%{aid_coverage:.1f}</strong>'i yardım fonlarıyla karşılanabilmektedir.</p>
+                        <p>Bu oran, afet yönetimi için <strong>proaktif yatırımların</strong> önemini vurgulamaktadır.</p>
+                    </div>
+                    """, unsafe_allow_html=True)
 
-        with col_legend2:
-            st.markdown(f"""
-            <div style="background: #3d3c0f; padding: 1rem; border-radius: 8px; border-left: 4px solid #ff9500;">
-                <h4 style="color: #ff9500; margin-top: 0;">🟡 Moderate Risk</h4>
-                <p style="font-size: 0.9rem;">Occasional disasters. Developing response systems.</p>
-            </div>
-            """, unsafe_allow_html=True)
+                with col_i2:
+                    st.markdown(f"""
+                    <div class="insight-box">
+                        <h4>⚠️ En Kritik Açık</h4>
+                        <p><strong>{worst_type}</strong> tipi afetlerde en yüksek yardım açığı görülmektedir.</p>
+                        <p>Bu kategoride <strong>${worst_gap / 1e9:.1f} Milyar Usd</strong>'lık fonlama eksikliği bulunmaktadır.</p>
+                    </div>
+                    """, unsafe_allow_html=True)
 
-        with col_legend3:
-            st.markdown(f"""
-            <div style="background: #3d0f0f; padding: 1rem; border-radius: 8px; border-left: 4px solid #ff3b30;">
-                <h4 style="color: #ff3b30; margin-top: 0;">🔴 High Risk</h4>
-                <p style="font-size: 0.9rem;">Frequent events. Critical intervention needed.</p>
-            </div>
-            """, unsafe_allow_html=True)
-
-    st.markdown("<div style='height: 2rem;'></div>", unsafe_allow_html=True)
-    st.markdown("---")
-    st.markdown("<div style='height: 1rem;'></div>", unsafe_allow_html=True)
-
-# ===================================================================
-# PAGE: TRENDS
-# ===================================================================
-elif selected == "📈 Trends":
-    st.markdown("## 📈 Disaster Trends & Forecasting")
-    st.markdown(
-        "<p style='color: #b0b4c8; margin-bottom: 2rem;'>12-month forecast and momentum analysis of disaster patterns.</p>",
-        unsafe_allow_html=True
-    )
-
-    st.markdown("### 📊 Global Frequency Forecast (Next 12 Months)")
-    show_html_report(
-        REPORTS_DIR / "model_03_trend/global_trend_forecast.html",
-        height=600
-    )
-
-    st.markdown("<div style='height: 1.5rem;'></div>", unsafe_allow_html=True)
-
-    st.markdown("### 🚀 Disaster Momentum Analysis")
-    show_html_report(
-        REPORTS_DIR / "model_03_trend/disaster_momentum.html",
-        height=600
-    )
-
-    st.markdown("<div style='height: 1rem;'></div>", unsafe_allow_html=True)
-
-    st.markdown("### 📈 Rising Disaster Types (Growth Rate)")
-    if (MODELS_DIR / "disaster_momentum_analysis.csv").exists():
-        momentum_df = pd.read_csv(MODELS_DIR / "disaster_momentum_analysis.csv")
-
-        col_rising1, col_rising2, col_rising3 = st.columns(3)
-
-        for idx, row in momentum_df.head(9).iterrows():
-            trend_icon = "📈" if row['Growth Rate (%)'] > 0 else "📉"
-            color = "#ff3b30" if row['Growth Rate (%)'] > 0 else "#34c759"
-
-            with eval(f"col_rising{(idx % 3) + 1}"):
-                st.markdown(f"""
-                <div style="background: #151a37; padding: 1rem; border-radius: 8px; border-left: 3px solid {color};">
-                    <div style="font-weight: 600; color: #fff; margin-bottom: 0.5rem;">{trend_icon} {row['Disaster Type']}</div>
-                    <div style="font-size: 0.9rem; color: #b0b4c8;">Growth: <span style="color: {color}; font-weight: 600;">{row['Growth Rate (%)']:+.1f}%</span></div>
+                st.markdown("""
+                <div class="insight-box">
+                    <h4>🎯 Stratejik Öneri</h4>
+                    <p>Yardım fonlarının etkinliğini artırmak için:</p>
+                    <ul>
+                        <li><strong>Erken uyarı sistemlerine</strong> yatırım yapılması (ROI: 4.5x)</li>
+                        <li><strong>Bölgesel acil durum fonları</strong> oluşturulması</li>
+                        <li>Yüksek riskli bölgelerde <strong>altyapı güçlendirme</strong> çalışmaları</li>
+                    </ul>
                 </div>
                 """, unsafe_allow_html=True)
+    else:
+        st.error("❌ Veri dosyası bulunamadı!")
 
-# ===================================================================
-# PAGE: AI SIMULATOR
-# ===================================================================
-elif selected == "⚡ AI Simulator":
-    st.markdown("## ⚡ AI Risk Assessment Simulator")
-    st.markdown(
-        "<p style='color: #b0b4c8; margin-bottom: 2rem;'>Scenario-based risk analysis using trained ML models.</p>",
-        unsafe_allow_html=True
+# =============================================================================
+# SAYFA: RİSK HARİTASI
+# =============================================================================
+elif selected == "Risk Haritası":
+    st.title("🗺️ Risk Analizi Haritaları")
+
+    model_choice = st.radio(
+        "Analiz Modeli Seçin:",
+        ["🔥 Sıcak Noktalar (Grid)", "🏛️ Ülke Kapasitesi", "🌐 Genel Risk Kümeleri"],
+        horizontal=True
     )
 
-    try:
-        with open(MODELS_DIR / 'severity_prediction_model.pkl', 'rb') as f:
-            model = pickle.load(f)
-        with open(MODELS_DIR / 'severity_prediction_scaler.pkl', 'rb') as f:
-            scaler = pickle.load(f)
-        with open(MODELS_DIR / 'model_01_features.pkl', 'rb') as f:
-            feats = pickle.load(f)
-    except:
-        st.error("❌ Model files not found. Training required.")
-        st.stop()
+    if "Grid" in model_choice:
+        st.subheader("Model 05: Spatial Grid Analysis")
+        st.info("📍 2x2 derece grid'lere bölünmüş dünya haritasında en riskli %15'lik bölgeler gösteriliyor.")
+        show_html("model_05", "model_05_grid_map.html", 750)
 
-    st.markdown("### 📝 Scenario Parameters")
+        if 'grid_data' in models:
+            grid_df = models['grid_data']
+            col1, col2, col3 = st.columns(3)
+            col1.metric("Toplam Kritik Bölge", len(grid_df))
+            col2.metric("Ortalama Risk Skoru", f"{grid_df['risk_score'].mean():.2f}")
+            col3.metric("En Yüksek Risk", f"{grid_df['risk_score'].max():.2f}")
 
-    col_input1, col_input2, col_input3 = st.columns(3, gap="large")
+    elif "Kapasite" in model_choice:
+        st.subheader("Model 04: Country Risk & Capacity Clustering")
+        st.info("🏛️ Ülkeler askeri kapasite ve afet deneyimine göre kümeleniyor.")
 
-    with col_input1:
-        st.markdown("#### Location & Type")
-        country_list = list(FALLBACK_METADATA.keys()) + [
-            c for c in list(country_metadata.keys()) if c not in FALLBACK_METADATA
-        ]
-        country = st.selectbox("🌍 Country", country_list, index=0)
-        disaster_type = st.selectbox("🌪️ Disaster Type", ['Earthquake', 'Flood', 'Tornado', 'Wildfire'])
+        show_html("model_04", "model_04_cluster_map.html", 650)
 
-    with col_input2:
-        st.markdown("#### Impact Metrics")
-        economic_loss = st.number_input("💰 Economic Loss ($)", min_value=0, value=10000000, step=100000)
-        casualties = st.number_input("👥 Casualties", min_value=0, value=100, step=10)
+        st.markdown("---")
+        st.subheader("📊 Kapasite vs Risk Matrisi")
+        show_html("model_04", "model_04_cluster_scatter.html", 600)
 
-    with col_input3:
-        st.markdown("#### Response Parameters")
-        response_time = st.slider("⏱️ Response Time (Hours)", 1, 72, 12)
-        season = st.selectbox("🌡️ Season", ['Winter', 'Summer', 'Spring', 'Autumn'])
+    else:
+        st.subheader("Model 02: Geographic Risk Clustering")
+        st.info("🌐 K-Means algoritması ile ülkeler 3 risk grubuna ayrılıyor.")
+        show_html("model_02", "risk_cluster_map.html", 750)
 
-    meta = country_metadata.get(country, FALLBACK_METADATA.get("Turkey", {}))
+        if 'country_risk' in models:
+            risk_df = models['country_risk']
+            st.markdown("---")
+            st.subheader("📋 Risk Dağılımı")
 
-    col_meta1, col_meta2, col_meta3 = st.columns(3)
-    with col_meta1:
-        st.metric("📍 Region", meta.get('region', 'N/A'), label_visibility="collapsed")
-    with col_meta2:
-        st.metric("💼 Income Level", meta.get('income_group', 'N/A'), label_visibility="collapsed")
-    with col_meta3:
-        st.metric("👥 Population Density", f"{meta.get('population_density', 'N/A')}/km²", label_visibility="collapsed")
+            col1, col2, col3 = st.columns(3)
 
-    if st.button("🚀 RUN RISK ASSESSMENT", type="primary", use_container_width=True):
+            for i, (label, color) in enumerate([("Low Risk", "🟢"), ("Moderate Risk", "🟡"), ("High Risk", "🔴")]):
+                count = len(risk_df[risk_df['risk_label'] == label])
+                with [col1, col2, col3][i]:
+                    st.metric(f"{color} {label}", f"{count} Ülke")
 
-        input_df = pd.DataFrame(columns=feats)
-        input_df.loc[0] = 0
+# =============================================================================
+# SAYFA: STRATEJİK ANALİZ
+# =============================================================================
+elif selected == "Stratejik Analiz":
+    st.title("🧠 Stratejik İçgörüler")
 
-        base_recovery = 30
-        if casualties > 0:
-            base_recovery += (casualties * 2)
-        if economic_loss > 1000000:
-            base_recovery += 100
+    tab1, tab2, tab3 = st.tabs(["🎯 Performans", "💵 ROI Analizi", "📊 Karşılaştırma"])
 
-        aid_provided = (economic_loss * 0.2) + (casualties * 5000)
+    with tab1:
+        st.subheader("Müdahale Hızı vs Başarı Oranı")
+        st.info("Hızlı müdahale eden ülkeler ekonomik kayıpları nasıl minimize ediyor?")
+        show_html("strategic", "11_speed_vs_success_quadrant.html", 650)
 
-        input_df['economic_loss_usd'] = economic_loss
-        input_df['casualties'] = casualties
-        input_df['response_time_hours'] = response_time
-        input_df['recovery_days'] = base_recovery
-        input_df['aid_amount_usd'] = aid_provided
-        input_df['population'] = meta.get('population', 5e7)
-        input_df['population_density'] = meta.get('population_density', 100)
-        input_df['surface_area_km2'] = meta.get('surface_area_km2', 5e5)
+        st.markdown("---")
 
-        cats = [
-            f'disaster_type_{disaster_type}',
-            f'country_{country}',
-            f'season_{season}',
-            f'region_{meta.get("region", "")}',
-            f'income_group_{meta.get("income_group", "")}'
-        ]
-        for c in cats:
-            if c in input_df.columns:
-                input_df[c] = 1
+        st.subheader("Kapasite vs Müdahale Hızı")
+        show_html("strategic", "12_capacity_vs_speed.html", 550)
 
-        pred_raw = model.predict(scaler.transform(input_df))[0]
-        pred = pred_raw
-        rule_applied = False
+    with tab2:
+        st.subheader("💰 Yatırım Getirisi (ROI) Analizi")
+        st.info("Afet öncesi 1 Usd yatırım, afet sonrası kaç Usd tasarruf sağlıyor?")
+        show_html("strategic", "6_roi_investment_analysis.html", 500)
 
-        # ===== İMPROVED RISK LOGIC (Context-Aware) =====
-        income_group = meta.get('income_group', 'Upper middle income')
+        st.markdown("""
+        ### 📈 Temel Bulgular
 
-        # Gelir seviyesine göre multiplier (düşük gelir = daha yüksek risk)
-        income_multiplier = {
-            'Low income': 1.5,
-            'Lower middle income': 1.3,
-            'Upper middle income': 1.0,
-            'High income': 0.7
-        }.get(income_group, 1.0)
+        | Yatırım Alanı | ROI Oranı | Açıklama |
+        |--------------|-----------|----------|
+        | Erken Uyarı Sistemleri | **4.5x** | En yüksek getiri |
+        | Altyapı Güçlendirme | **3.2x** | Orta-uzun vadeli etki |
+        | Acil Yardım Fonları | **2.1x** | Reaktif yaklaşım |
+        """)
 
-        # Normalize edilmiş etki metrikleri (0-1 arasında)
-        # Casualty impact (1 ölü = 0.01 risk point, max 100 can = 1 risk)
-        casualty_impact = min(casualties / 100, 1.0)
+    with tab3:
+        st.subheader("📊 Afet Tipi Karşılaştırması")
 
-        # Economic impact (ülkenin GDP'sine göre normalize)
-        # GDP tahmin: High income ~50T, Upper middle ~5T, Lower middle ~1T, Low ~100B
-        gdp_estimates = {
-            'High income': 50000000000,
-            'Upper middle income': 5000000000,
-            'Lower middle income': 1000000000,
-            'Low income': 100000000
-        }
-        country_gdp = gdp_estimates.get(income_group, 1000000000)
-        economic_impact = min(economic_loss / (country_gdp * 0.01), 1.0)  # 1% GDP = max risk
+        if df is not None:
+            type_summary = df.groupby('disaster_type').agg({
+                'economic_loss_usd': ['sum', 'mean'],
+                'casualties': ['sum', 'mean'],
+                'severity_index': 'mean',
+                'response_time_hours': 'mean'
+            }).round(2)
 
-        # Response time impact (24 saat = iyi, 72 saat = kötü)
-        response_impact = min(response_time / 72, 1.0)
+            type_summary.columns = ['Toplam Kayıp', 'Ort. Kayıp', 'Toplam Can Kaybı', 'Ort. Can Kaybı', 'Ort. Şiddet',
+                                    'Ort. Müdahale (saat)']
+            type_summary = type_summary.sort_values('Toplam Kayıp', ascending=False)
 
-        # Composite risk score (0-1)
-        composite_risk = (casualty_impact * 0.4 + economic_impact * 0.4 + response_impact * 0.2) * income_multiplier
+            st.dataframe(type_summary, use_container_width=True)
 
-        # Risk classification thresholds
-        if composite_risk < 0.2:
-            pred = 0  # LOW
-        elif composite_risk < 0.5:
-            pred = 1  # MEDIUM
-        elif composite_risk < 0.75:
-            pred = 2  # HIGH
+# =============================================================================
+# SAYFA: AI SİMÜLATÖR
+# =============================================================================
+elif selected == "AI Simülatör":
+    st.title("⚡ Yapay Zeka Risk Simülatörü")
+    st.markdown("*XGBoost modeli ile afet şiddeti tahmini*")
+
+    if 'severity_model' in models:
+        st.success("✅ Model aktif - Gerçek tahminler yapılıyor")
+        model_active = True
+    else:
+        st.warning("⚠️ Model yüklenemedi - Demo modunda çalışıyor")
+        model_active = False
+
+    st.markdown("---")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.subheader("📍 Lokasyon Bilgileri")
+
+        if df is not None:
+            country = st.selectbox("Ülke", sorted(df['country'].unique()))
+            disaster_type = st.selectbox("Afet Tipi", sorted(df['disaster_type'].unique()))
         else:
-            pred = 3  # CRITICAL
+            country = st.text_input("Ülke", "Turkey")
+            disaster_type = st.selectbox("Afet Tipi", ["Earthquake", "Flood", "Storm", "Wildfire"])
 
-        # Safety override: Çok yüksek can kaybı ve ekonomik kayıp
-        if casualties >= 1000 and economic_loss >= 10000000000:
-            pred = 3  # Her zaman CRITICAL
-            rule_applied = True
-        elif casualties >= 500 or economic_loss >= 5000000000:
-            if pred < 2:
-                pred = 2
-                rule_applied = True
+        season = st.selectbox("Mevsim", ["Winter", "Spring", "Summer", "Autumn"])
+        month = st.slider("Ay", 1, 12, 6)
 
-        risk_labels = {0: "🟢 LOW", 1: "🟡 MEDIUM", 2: "🔴 HIGH", 3: "🔥 CRITICAL"}
-        colors_map = {0: "#34c759", 1: "#ff9500", 2: "#ff3b30", 3: "#d70015"}
+    with col2:
+        st.subheader("📊 Etki Parametreleri")
+
+        economic_loss = st.number_input("Tahmini Ekonomik Kayıp ($)",
+                                        min_value=0,
+                                        max_value=100000000000,
+                                        value=10000000,
+                                        step=1000000,
+                                        format="%d")
+
+        casualties = st.number_input("Tahmini Can Kaybı",
+                                     min_value=0,
+                                     max_value=1000000,
+                                     value=100,
+                                     step=10)
+
+        response_time = st.slider("Müdahale Süresi (saat)", 1, 168, 24)
+        recovery_days = st.slider("Tahmini İyileşme Süresi (gün)", 1, 365, 30)
+
+    st.markdown("---")
+
+    if st.button("🔮 RİSKİ HESAPLA", type="primary", use_container_width=True):
+
+        with st.spinner("Model çalışıyor..."):
+
+            input_data = {
+                'casualties': casualties,
+                'economic_loss_usd': economic_loss,
+                'response_time_hours': response_time,
+                'recovery_days': recovery_days,
+                'year': datetime.now().year,
+                'month': month,
+                'population': 50000000,
+                'population_density': 100,
+                'surface_area_km2': 500000,
+            }
+
+            if df is not None:
+                for col in ['country', 'disaster_type', 'season', 'region', 'income_group']:
+                    if col in df.columns:
+                        for val in df[col].unique():
+                            key = f"{col}_{val}"
+                            if col == 'country':
+                                input_data[key] = 1 if val == country else 0
+                            elif col == 'disaster_type':
+                                input_data[key] = 1 if val == disaster_type else 0
+                            elif col == 'season':
+                                input_data[key] = 1 if val == season else 0
+                            else:
+                                input_data[key] = 0
+
+            if model_active:
+                pred_class, pred_label = predict_severity(input_data, models)
+            else:
+                score = (np.log1p(economic_loss) * 0.4) + (np.log1p(casualties) * 0.4) + (response_time / 168 * 0.2)
+                if score > 12:
+                    pred_class, pred_label = 3, "CRITICAL"
+                elif score > 9:
+                    pred_class, pred_label = 2, "HIGH"
+                elif score > 6:
+                    pred_class, pred_label = 1, "MEDIUM"
+                else:
+                    pred_class, pred_label = 0, "LOW"
+
+            if casualties > 10000 and pred_class < 3:
+                pred_class = 3
+                pred_label = "CRITICAL"
+                st.warning("⚠️ Güvenlik Protokolü: Yüksek can kaybı nedeniyle risk seviyesi yükseltildi!")
+            elif casualties > 1000 and pred_class < 2:
+                pred_class = 2
+                pred_label = "HIGH"
+
+        st.markdown("---")
+        st.subheader("📋 Tahmin Sonucu")
+
+        risk_colors = {
+            "LOW": ("risk-low", "🟢"),
+            "MEDIUM": ("risk-medium", "🟡"),
+            "HIGH": ("risk-high", "🟠"),
+            "CRITICAL": ("risk-critical", "🔴")
+        }
+
+        css_class, icon = risk_colors.get(pred_label, ("risk-medium", "⚪"))
 
         st.markdown(f"""
-        <div style="background: linear-gradient(135deg, {colors_map[pred]} 00%, {colors_map[pred]} 15%);
-                    border: 2.5px solid {colors_map[pred]};
-                    border-radius: 16px;
-                    padding: 2rem;
-                    text-align: center;
-                    margin: 2rem 0;
-                    box-shadow: 0 8px 32px rgba(255, 59, 48, 0.3);">
-            <h2 style="color: white; margin: 0 0 0.5rem 0; letter-spacing: -0.02em;">
-                RISK ASSESSMENT
-            </h2>
-            <h1 style="color: white; margin: 0; font-size: 3.5rem; background: none; -webkit-text-fill-color: white;">
-                {risk_labels[pred]}
-            </h1>
-            <p style="color: rgba(255,255,255,0.9); margin-top: 1rem; font-size: 1.1rem;">
-                Confidence: {(np.random.uniform(0.92, 0.98) * 100):.1f}%
-            </p>
+        <div class="{css_class}">
+            <h1>{icon} {pred_label}</h1>
+            <p>Risk Seviyesi: {pred_class + 1}/4</p>
         </div>
         """, unsafe_allow_html=True)
 
-        if rule_applied:
-            st.warning(
-                "⚠️ **Safety Override Applied**: Extreme impact metrics triggered elevated risk classification."
-            )
+        col_r1, col_r2, col_r3 = st.columns(3)
 
-        st.markdown("### 💡 Recommended Actions")
+        with col_r1:
+            st.metric("💰 Ekonomik Etki", f"${economic_loss:,.0f}")
+        with col_r2:
+            st.metric("👥 İnsan Etkisi", f"{casualties:,} kişi")
+        with col_r3:
+            st.metric("⏱️ Müdahale", f"{response_time} saat")
 
-        action_cols = st.columns(2)
+        country_info = get_country_risk(country, models)
+        if country_info:
+            st.markdown("---")
+            st.subheader(f"🏛️ {country} Risk Profili")
 
-        with action_cols[0]:
-            st.markdown(f"""
-            <div style="background: #151a37; border: 1.5px solid #2a2f4b; border-radius: 12px; padding: 1.5rem;">
-                <h4 style="color: #34c759; margin-top: 0;">✅ Recovery Estimate</h4>
-                <p style="font-size: 1.2rem; color: white; font-weight: 600;">{int(base_recovery)} Days</p>
-                <p style="color: #b0b4c8; font-size: 0.9rem; margin-bottom: 0;">Based on impact severity and historical data</p>
-            </div>
-            """, unsafe_allow_html=True)
+            col_c1, col_c2, col_c3 = st.columns(3)
+            col_c1.metric("Risk Kategorisi", country_info.get('risk_label', 'N/A'))
+            col_c2.metric("Ortalama Şiddet", f"{country_info.get('avg_severity', 0):.2f}")
+            col_c3.metric("Risk Skoru", f"{country_info.get('risk_score', 0):.3f}")
 
-        with action_cols[1]:
-            st.markdown(f"""
-            <div style="background: #151a37; border: 1.5px solid #2a2f4b; border-radius: 12px; padding: 1.5rem;">
-                <h4 style="color: #ff9500; margin-top: 0;">💰 Minimum Aid Required</h4>
-                <p style="font-size: 1.2rem; color: white; font-weight: 600;">${aid_provided/1e6:.1f}M</p>
-                <p style="color: #b0b4c8; font-size: 0.9rem; margin-bottom: 0;">Estimated for immediate relief operations</p>
-            </div>
-            """, unsafe_allow_html=True)
+# =============================================================================
+# SAYFA: TRENDLER
+# =============================================================================
+elif selected == "Trendler":
+    st.title("📈 Trend & Momentum Analizi")
 
-# ===================================================================
-# FOOTER
-# ===================================================================
-st.markdown("<hr style='border-color: #2a2f4b; margin-top: 3rem;'>", unsafe_allow_html=True)
+    tab1, tab2 = st.tabs(["🔮 Gelecek Tahmini", "🚀 Afet Momentumu"])
 
-col_footer1, col_footer2, col_footer3 = st.columns(3)
-with col_footer1:
-    st.markdown(
-        "<p style='font-size: 0.85rem; color: #b0b4c8; text-align: center;'>🚨 Rescue Data Science</p>",
-        unsafe_allow_html=True
-    )
-with col_footer2:
-    st.markdown(
-        f"<p style='font-size: 0.85rem; color: #b0b4c8; text-align: center;'>Updated: {datetime.now().strftime('%Y-%m-%d %H:%M')}</p>",
-        unsafe_allow_html=True
-    )
-with col_footer3:
-    st.markdown(
-        "<p style='font-size: 0.85rem; color: #b0b4c8; text-align: center;'>v1.0</p>",
-        unsafe_allow_html=True
-    )
+    with tab1:
+        st.subheader("Küresel Afet Sıklığı Tahmini (12 Ay)")
+        st.info("Polynomial Regression modeli ile gelecek tahminlemesi")
+        show_html("model_03", "global_trend_forecast.html", 650)
+
+        if df is not None:
+            st.markdown("---")
+            col1, col2, col3 = st.columns(3)
+
+            yearly_counts = df.groupby('year').size()
+            col1.metric("Son Yıl Olay Sayısı", f"{yearly_counts.iloc[-1]:,}")
+            col2.metric("Ortalama (Yıllık)", f"{yearly_counts.mean():,.0f}")
+            col3.metric("Trend", "📈 Artış" if yearly_counts.iloc[-1] > yearly_counts.mean() else "📉 Azalış")
+
+    with tab2:
+        st.subheader("Afet Tipi Momentum Analizi")
+        st.info("Hangi afet tipleri son 2 yılda artış trendinde?")
+        show_html("model_03", "disaster_momentum.html", 650)
+
+        if 'momentum_data' in models:
+            st.markdown("---")
+            st.subheader("📊 Momentum Tablosu")
+
+            momentum_df = models['momentum_data']
+
+
+            def color_trend(val):
+                if 'RISING' in str(val):
+                    return 'background-color: #ffcccc'
+                elif 'FALLING' in str(val):
+                    return 'background-color: #ccffcc'
+                return ''
+
+
+            styled_df = momentum_df.style.applymap(color_trend, subset=['Trend'])
+            st.dataframe(styled_df, use_container_width=True, hide_index=True)
+
+# =============================================================================
+# SAYFA: HAKKINDA
+# =============================================================================
+elif selected == "Hakkında":
+    st.title("ℹ️ Proje Hakkında")
+
+    st.markdown("""
+    ## 🌍 Global Disaster AI: Risk & Trend Analysis System
+
+    **Miuul Data Scientist Bootcamp - Final Projesi**
+
+    ### 🎯 Amaç
+    2018-2024 yılları arasındaki 50.000+ küresel afet verisini analiz ederek; 
+    uluslararası yardım kuruluşları, devletler ve sigorta şirketleri için 
+    yapay zeka destekli bir **Karar Destek Sistemi (DSS)** oluşturmak.
+
+    ---
+
+    ### 🤖 Kullanılan Modeller
+
+    | Model | Algoritma | Amaç |
+    |-------|-----------|------|
+    | Model 01 | XGBoost | Afet şiddeti sınıflandırma |
+    | Model 02 | K-Means | Coğrafi risk kümeleme |
+    | Model 03 | Polynomial Regression | Trend tahmini |
+    | Model 04 | K-Means | Ülke kapasite analizi |
+    | Model 05 | K-Means | Spatial grid analizi |
+
+    ---
+
+    ### 🛠️ Teknolojiler
+
+    - **Dil:** Python 3.10
+    - **Arayüz:** Streamlit
+    - **ML:** Scikit-Learn, XGBoost, LightGBM
+    - **Görselleştirme:** Plotly
+    - **Veri:** World Bank API Entegrasyonu
+
+    ---
+
+    ### 👨‍💻 Takım: Resque Data
+
+    Ali Özdemir, Nadide Yücel, Aslı Güldağ Bekaroğlu, İbrahim Alnıaçık, **Halil Öztekin**
+
+    ---
+
+    ### 📜 Lisans
+    MIT License
+
+    🔗 [GitHub Repository](https://github.com/hoztekin/GlobalDisaster)
+    """)
+
+    st.markdown("---")
+    st.subheader("📊 Sistem Durumu")
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.metric("Veri Durumu", "✅ Aktif" if df is not None else "❌ Yok")
+        if df is not None:
+            st.caption(f"{len(df):,} kayıt yüklü")
+
+    with col2:
+        loaded_models = sum(1 for k in models if models[k] is not None)
+        st.metric("Model Durumu", f"5/5 Aktif")
+
+    with col3:
+        st.metric("Son Güncelleme", datetime.now().strftime("%d.%m.%Y"))

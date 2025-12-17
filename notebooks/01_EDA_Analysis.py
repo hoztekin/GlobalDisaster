@@ -1,6 +1,5 @@
 # =============================================================================
 # 01__EDA.py
-# (BİRLEŞTİRİLMİŞ TAM ANALİZ: Veri Zenginleştirme + Detaylı Keşifsel Analiz)
 # =============================================================================
 
 """
@@ -27,10 +26,10 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from scipy import stats
 from scipy.stats import f_oneway, kruskal, spearmanr
+from sklearn.preprocessing import StandardScaler
 from pathlib import Path
 from datetime import datetime
 
-# 1. KRİTİK AYAR: Çökme Engelleyici (forrtl error çözümü)
 os.environ['FOR_DISABLE_CONSOLE_CTRL_HANDLER'] = '1'
 
 # Ayarlar
@@ -38,7 +37,6 @@ warnings.filterwarnings('ignore')
 pd.set_option('display.max_columns', None)
 plt.style.use('seaborn-v0_8-whitegrid')
 
-# 2. KRİTİK AYAR: Dosya Yolu (NameError çözümü)
 
 try:
     PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -72,6 +70,14 @@ df = pd.read_csv(DATA_RAW)
 df['date'] = pd.to_datetime(df['date'])
 df['year'] = df['date'].dt.year
 
+INDICATORS = {
+    "SP.POP.TOTL": "population",                # Nüfus
+    "AG.SRF.TOTL.K2": "surface_area_km2",       # Yüzölçümü
+    "MS.MIL.XPND.GD.ZS": "mil_expenditure_gdp", # Askeri Harcama (% GSYH)
+    "MS.MIL.TOTL.P1": "armed_forces_total",     # Toplam Asker Sayısı
+    "SP.DYN.LE00.IN": "life_expectancy"         # Yaşam Beklentisi
+}
+
 # World Bank API Yardımcıları
 COUNTRY_TO_ISO3 = {
     "Australia": "AUS", "Bangladesh": "BGD", "Brazil": "BRA", "Canada": "CAN",
@@ -84,78 +90,90 @@ COUNTRY_TO_ISO3 = {
 }
 
 
-def fetch_wb_indicator(iso3, indicator, start, end):
-    url = f"https://api.worldbank.org/v2/country/{iso3}/indicator/{indicator}"
-    params = {"date": f"{start}:{end}", "format": "json", "per_page": "100"}
-    try:
-        # TIMEOUT EKLENDİ: 10 saniye cevap gelmezse pas geçer, program donmaz.
-        r = requests.get(url, params=params, timeout=10)
-        if r.status_code == 200 and len(r.json()) > 1:
-            return {int(x['date']): x['value'] for x in r.json()[1] if x['value']}
-    except:
-        return {}
-    return {}
+def fetch_wb_data(iso3, indicators, start_year, end_year):
+    country_data = {}
+    for code, name in indicators.items():
+        url = f"https://api.worldbank.org/v2/country/{iso3}/indicator/{code}"
+        params = {"date": f"{start_year}:{end_year}", "format": "json", "per_page": "100"}
+        try:
+            r = requests.get(url, params=params, timeout=5)
+            if r.status_code == 200 and len(r.json()) > 1:
+                country_data[name] = {int(x['date']): x['value'] for x in r.json()[1] if x['value'] is not None}
+        except:
+            pass
+    return country_data
 
 
-print("   🌐 World Bank verileri çekiliyor (Nüfus, Yüzölçümü)...")
-records = []
-countries = [c for c in df['country'].unique() if c in COUNTRY_TO_ISO3]
+wb_records = []
+unique_countries = [c for c in df['country'].unique() if c in COUNTRY_TO_ISO3]
+min_year, max_year = int(df['year'].min()), int(df['year'].max())
 
-for c in countries:
-    iso = COUNTRY_TO_ISO3[c]
-    # Nüfus
-    pop_map = fetch_wb_indicator(iso, "SP.POP.TOTL", df['year'].min(), df['year'].max())
-    # Yüzölçümü (2020 sabit)
-    area_map = fetch_wb_indicator(iso, "AG.SRF.TOTL.K2", 2020, 2020)
-    area = list(area_map.values())[0] if area_map else None
+print(f"   🌐 {len(unique_countries)} ülke için ek kapasite verileri çekiliyor...")
+for country in unique_countries:
+    iso = COUNTRY_TO_ISO3[country]
+    data_map = fetch_wb_data(iso, INDICATORS, min_year, max_year)
+    static_area = list(data_map['surface_area_km2'].values())[0] if 'surface_area_km2' in data_map and data_map[
+        'surface_area_km2'] else None
 
-    for y in range(df['year'].min(), df['year'].max() + 1):
-        records.append({
-            "country": c, "year": y,
-            "population": pop_map.get(y),
-            "surface_area_km2": area
-        })
+    for y in range(min_year, max_year + 1):
+        row = {'country': country, 'year': y, 'surface_area_km2': static_area}
+        for col in ['population', 'mil_expenditure_gdp', 'armed_forces_total', 'life_expectancy']:
+            row[col] = data_map.get(col, {}).get(y, np.nan)
+        wb_records.append(row)
 
-wb_df = pd.DataFrame(records)
+wb_df = pd.DataFrame(wb_records)
 df = df.merge(wb_df, on=['country', 'year'], how='left')
-print(f"   ✅ Veri zenginleştirildi! (Population ve Surface Area eklendi)")
 
-# Eksikleri doldur (Mean Imputation)
-df['population'] = df['population'].fillna(df.groupby('country')['population'].transform('mean'))
+# Eksik Doldurma (Önce ülke içi ortalama, sonra global medyan)
+cols_fill = ['population', 'mil_expenditure_gdp', 'armed_forces_total', 'life_expectancy', 'surface_area_km2']
+df[cols_fill] = df.groupby('country')[cols_fill].transform(lambda x: x.ffill().bfill())
+for c in cols_fill:
+    if df[c].isnull().any():
+        df[c] = df[c].fillna(df[c].median())
+
+print("   ✅ API Verileri Eklendi ve Dolduruldu.")
 
 # =============================================================================
 # BÖLÜM 2: FEATURE ENGINEERING
 # =============================================================================
 print("\n[2/11] FEATURE ENGINEERING")
 
-# Zaman
 df['month'] = df['date'].dt.month
-df['day_of_year'] = df['date'].dt.dayofyear
-
-
 def get_season(m):
-    if m in [12, 1, 2]:
-        return 'Winter'
-    elif m in [3, 4, 5]:
-        return 'Spring'
-    elif m in [6, 7, 8]:
-        return 'Summer'
-    else:
-        return 'Autumn'
-
-
+    return 'Winter' if m in [12, 1, 2] else 'Spring' if m in [3, 4, 5] else 'Summer' if m in [6, 7, 8] else 'Autumn'
 df['season'] = df['month'].apply(get_season)
 
-# Hesaplamalı Metrikler
 df['population_density'] = df['population'] / (df['surface_area_km2'] + 1)
 df['loss_per_capita'] = df['economic_loss_usd'] / (df['population'] + 1)
 df['casualties_per_100k'] = (df['casualties'] / (df['population'] + 1)) * 100000
-
-# Log Dönüşümleri (Modeller için hazırlık)
 df['casualties_log'] = np.log1p(df['casualties'])
 df['economic_loss_log'] = np.log1p(df['economic_loss_usd'])
 
-print("   ✅ Yeni özellikler üretildi: Season, Density, Loss Per Capita...")
+# 1. Müdahale Hızı (Response Time)
+if 'response_time_hours' not in df.columns:
+    if 'end_date' in df.columns and 'start_date' in df.columns:
+        df['response_time_hours'] = (df['end_date'] - df['start_date']).dt.total_seconds() / 3600
+        df['response_time_hours'] = df['response_time_hours'].apply(lambda x: x if x > 0 else np.nan)
+        df['response_time_hours'] = df['response_time_hours'].fillna(df['response_time_hours'].median())
+
+# 2. Hız Kategorisi (Quadrant Grafiği İçin)
+df['response_category'] = np.where(df['response_time_hours'] < df['response_time_hours'].median(), 'Fast', 'Slow')
+
+# 3. Askeri Kapasite Oranı
+df['troops_per_100k'] = (df['armed_forces_total'] / df['population']) * 100000
+
+# 4. Endeksler (Military Power & Human Capital)
+scaler = StandardScaler()
+df['human_capital_index'] = scaler.fit_transform(df[['life_expectancy']])
+mil_data = df[['mil_expenditure_gdp', 'troops_per_100k']].fillna(0)
+df['military_power_index'] = scaler.fit_transform(np.log1p(mil_data)).mean(axis=1)
+
+# 5. Afet Deneyimi (Experience Index)
+df['country_total_disasters'] = df['country'].map(df['country'].value_counts())
+df['disaster_diversity'] = df['country'].map(df.groupby('country')['disaster_type'].nunique())
+df['experience_index'] = np.log1p(df['country_total_disasters']) * df['disaster_diversity']
+
+print("   ✅ Yeni Stratejik Özellikler Üretildi (Troops, Military Index, Experience Index)")
 
 # =============================================================================
 # BÖLÜM 3: DATA QUALITY CHECK
@@ -221,20 +239,17 @@ else:
 # BÖLÜM 8: CORRELATION ANALYSIS
 # =============================================================================
 print("\n[8/11] CORRELATION ANALYSIS")
+corr_cols = ['severity_index', 'casualties', 'economic_loss_usd',
+             'population_density', 'response_time_hours',
+             'military_power_index', 'human_capital_index', 'experience_index']
+corr = df[corr_cols].corr()
 
-# Sadece sayısal kolonlar
-num_cols = ['severity_index', 'casualties', 'economic_loss_usd', 'population_density', 'response_time_hours']
-corr = df[num_cols].corr()
-
-print("   🔗 Korelasyon Matrisi:")
-print(corr)
-
-# Heatmap kaydet
-plt.figure(figsize=(10, 8))
+plt.figure(figsize=(12, 10))
 sns.heatmap(corr, annot=True, cmap='coolwarm', fmt=".2f")
-plt.title("Feature Correlation Matrix")
-plt.savefig(REPORT_DIR / "correlation_matrix.png")
-print("   💾 Heatmap kaydedildi: correlation_matrix.png")
+plt.title("Extended Feature Correlation Matrix")
+plt.tight_layout()
+plt.savefig(REPORT_DIR / "correlation_matrix_extended.png")
+print("   💾 Gelişmiş Heatmap Kaydedildi.")
 
 # =============================================================================
 # BÖLÜM 9: DISTRIBUTION ANALYSIS

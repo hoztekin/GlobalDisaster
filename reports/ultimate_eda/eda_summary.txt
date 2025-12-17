@@ -1,7 +1,7 @@
 
 EDA RAPORU
 -------------------
-Tarih: 2025-12-12 13:55:46.845103
+Tarih: 2025-12-17 15:20:06.748771
 Toplam Veri: 50000
 Zenginleþtirme: World Bank Nüfus ve Yüzölçümü Eklendi.
 
