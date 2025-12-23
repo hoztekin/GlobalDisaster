@@ -470,36 +470,34 @@ elif selected == "AI Simülatör":
     col1, col2 = st.columns(2)
 
     with col1:
-        st.subheader("📍 Lokasyon Bilgileri")
+        st.subheader("📍 Senaryo Bilgileri")
 
         if df is not None:
-            country = st.selectbox("Ülke", sorted(df['country'].unique()))
-            disaster_type = st.selectbox("Afet Tipi", sorted(df['disaster_type'].unique()))
+            country = st.selectbox("🌍 Ülke", sorted(df['country'].unique()),
+                                   help="Afet senaryosunun gerçekleşeceği ülkeyi seçin")
+            disaster_type = st.selectbox("⚡ Afet Tipi", sorted(df['disaster_type'].unique()),
+                                         help="Tahmin edilecek afet tipini seçin")
         else:
-            country = st.text_input("Ülke", "Turkey")
-            disaster_type = st.selectbox("Afet Tipi", ["Earthquake", "Flood", "Storm", "Wildfire"])
-
-        season = st.selectbox("Mevsim", ["Winter", "Spring", "Summer", "Autumn"])
-        month = st.slider("Ay", 1, 12, 6)
+            country = st.text_input("🌍 Ülke", "Turkey")
+            disaster_type = st.selectbox("⚡ Afet Tipi", ["Earthquake", "Flood", "Storm", "Wildfire"])
 
     with col2:
-        st.subheader("📊 Etki Parametreleri")
+        st.subheader("📊 Tahmin Parametreleri")
 
-        economic_loss = st.number_input("Tahmini Ekonomik Kayıp ($)",
+        economic_loss = st.number_input("💰 Tahmini Ekonomik Kayıp ($)",
                                         min_value=0,
                                         max_value=100000000000,
                                         value=10000000,
                                         step=1000000,
-                                        format="%d")
+                                        format="%d",
+                                        help="Afetin neden olacağı tahmini ekonomik zararı girin")
 
-        casualties = st.number_input("Tahmini Can Kaybı",
+        casualties = st.number_input("👥 Tahmini Can Kaybı",
                                      min_value=0,
                                      max_value=1000000,
                                      value=100,
-                                     step=10)
-
-        response_time = st.slider("Müdahale Süresi (saat)", 1, 168, 24)
-        recovery_days = st.slider("Tahmini İyileşme Süresi (gün)", 1, 365, 30)
+                                     step=10,
+                                     help="Afetin neden olabileceği tahmini can kaybını girin")
 
     st.markdown("---")
 
@@ -507,18 +505,47 @@ elif selected == "AI Simülatör":
 
         with st.spinner("Model çalışıyor..."):
 
+            # Otomatik hesaplanan değerler
+            current_month = datetime.now().month
+
+            # Mevsimi ay'dan hesapla
+            if current_month in [12, 1, 2]:
+                auto_season = "Winter"
+            elif current_month in [3, 4, 5]:
+                auto_season = "Spring"
+            elif current_month in [6, 7, 8]:
+                auto_season = "Summer"
+            else:
+                auto_season = "Autumn"
+
+            # Ülke bilgilerini dataset'ten al
+            country_data = df[df['country'] == country].iloc[0] if (
+                        df is not None and country in df['country'].values) else None
+
+            # Input data hazırla - makul varsayılanlarla
             input_data = {
                 'casualties': casualties,
                 'economic_loss_usd': economic_loss,
-                'response_time_hours': response_time,
-                'recovery_days': recovery_days,
+                'response_time_hours': 24,  # Varsayılan: 1 gün
+                'recovery_days': 30,  # Varsayılan: 1 ay
+                'aid_amount_usd': economic_loss * 0.3,  # Tahmini yardım: %30
                 'year': datetime.now().year,
-                'month': month,
-                'population': 50000000,
-                'population_density': 100,
-                'surface_area_km2': 500000,
+                'month': current_month,
+                'population': int(country_data[
+                                      'population']) if country_data is not None and 'population' in country_data else 50000000,
+                'population_density': float(country_data[
+                                                'population_density']) if country_data is not None and 'population_density' in country_data else 100,
+                'surface_area_km2': float(country_data[
+                                              'surface_area_km2']) if country_data is not None and 'surface_area_km2' in country_data else 500000,
             }
 
+            # Response efficiency ekle (varsa)
+            if 'response_efficiency_calc' in models.get('severity_features', []):
+                input_data['response_efficiency_calc'] = 1.0
+            elif 'response_efficiency_score' in models.get('severity_features', []):
+                input_data['response_efficiency_score'] = 1.0
+
+            # One-hot encoding için kategorik değişkenler
             if df is not None:
                 for col in ['country', 'disaster_type', 'season', 'region', 'income_group']:
                     if col in df.columns:
@@ -529,17 +556,22 @@ elif selected == "AI Simülatör":
                             elif col == 'disaster_type':
                                 input_data[key] = 1 if val == disaster_type else 0
                             elif col == 'season':
-                                input_data[key] = 1 if val == season else 0
+                                input_data[key] = 1 if val == auto_season else 0
+                            elif col == 'region' and country_data is not None:
+                                input_data[key] = 1 if val == country_data.get('region', '') else 0
+                            elif col == 'income_group' and country_data is not None:
+                                input_data[key] = 1 if val == country_data.get('income_group', '') else 0
                             else:
                                 input_data[key] = 0
 
             if model_active:
                 pred_class, pred_label = predict_severity(input_data, models)
             else:
-                score = (np.log1p(economic_loss) * 0.4) + (np.log1p(casualties) * 0.4) + (response_time / 168 * 0.2)
-                if score > 12:
+                # Fallback: Basit skorlama (sadece ekonomik kayıp ve can kaybı)
+                score = (np.log10(max(1, economic_loss)) * 0.5) + (np.log10(max(1, casualties) + 1) * 0.5)
+                if score > 10:
                     pred_class, pred_label = 3, "CRITICAL"
-                elif score > 9:
+                elif score > 8:
                     pred_class, pred_label = 2, "HIGH"
                 elif score > 6:
                     pred_class, pred_label = 1, "MEDIUM"
@@ -553,6 +585,20 @@ elif selected == "AI Simülatör":
             elif casualties > 1000 and pred_class < 2:
                 pred_class = 2
                 pred_label = "HIGH"
+                st.warning("⚠️ Güvenlik Protokolü: Yüksek can kaybı nedeniyle risk seviyesi yükseltildi!")
+
+            # Ekonomik Kayıp Protokolü
+            if economic_loss >= 5_000_000_000:  # 5 milyar USD üzeri → CRITICAL
+                if pred_class < 3:
+                    pred_class = 3
+                    pred_label = "CRITICAL"
+                    st.warning(
+                        "⚠️ Ekonomik Risk: Çok yüksek ekonomik kayıp (≥$5B) nedeniyle risk CRITICAL'e yükseltildi!")
+            elif economic_loss >= 1_000_000_000:  # 1 milyar USD üzeri → Minimum HIGH
+                if pred_class < 2:
+                    pred_class = 2
+                    pred_label = "HIGH"
+                    st.warning("⚠️ Ekonomik Risk: Yüksek ekonomik kayıp (≥$1B) nedeniyle risk HIGH'a yükseltildi!")
 
         st.markdown("---")
         st.subheader("📋 Tahmin Sonucu")
@@ -573,14 +619,12 @@ elif selected == "AI Simülatör":
         </div>
         """, unsafe_allow_html=True)
 
-        col_r1, col_r2, col_r3 = st.columns(3)
+        col_r1, col_r2 = st.columns(2)
 
         with col_r1:
-            st.metric("💰 Ekonomik Etki", f"${economic_loss:,.0f}")
+            st.metric("💰 Tahmini Ekonomik Kayıp", f"${economic_loss:,.0f}")
         with col_r2:
-            st.metric("👥 İnsan Etkisi", f"{casualties:,} kişi")
-        with col_r3:
-            st.metric("⏱️ Müdahale", f"{response_time} saat")
+            st.metric("👥 Tahmini Can Kaybı", f"{casualties:,} kişi")
 
         country_info = get_country_risk(country, models)
         if country_info:
